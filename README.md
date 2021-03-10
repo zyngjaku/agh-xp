@@ -1,3 +1,1 @@
 # agh-xp
-
-Kacper Tonia
