@@ -6,3 +6,4 @@ Mateusz Ruciński
 Przemysław Nocoń
 Jakub Zyngier
 Paweł Filiciak
+Dawid Karolewski
