@@ -1,0 +1,13 @@
+Ile zostało do zakupu wymarzonego sprzętu (dodajemy cel z kwotą i później możemy wypisać wszystkie cele i ile brakuje na koncie do zakupu)
+Dodawanie przychodów
+Dodawanie wydatków
+Dodawanie wydatków/przychodów cyklicznych 
+Historia wydatków względem kategorii /ZAKUPY, PRZYJEMNOSCI, SPORT, itp./ (dla danego miesiaca i roku np. 03.2021)
+Historia wydatków (dla ostanich X dni)
+Historia wydatków (dla danego miesiąca i roku np. 01.2021)
+Historia wydatków (ilościowo /last X np. 10, 20/)
+Ustawienie limitu wydatków w ramach miesiąca (ustawiamy jeden limit na wszystkie miesiące)
+Ustawianie początkowego salda (domyślnie 0)
+Podsumowanie zaoszczędoznych pieniędzy dla wszystkich miesięcy wstecz i obecnego (różnica przychodów i wydatków)
+Wybór waluty dla całej aplikacji (EURO, PLN, USD, może inne?)
+Podgląd obecnego salda
