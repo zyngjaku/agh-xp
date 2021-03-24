@@ -2,14 +2,14 @@ import com.company.BitCounter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BitCountTest {
     BitCounter bitCounter = new BitCounter();
 
     @Test
     void checkNumberOfBits() throws Exception {
-        assertEquals(10, bitCounter.noOfBits("123;89"));
+        assertEquals(10, bitCounter.noOfBits("123 ;      89"));
+        assertEquals(14, bitCounter.noOfBits("123 ;89; 89"));
 //
 //        Exception thrown = assertThrows(
 //                Exception.class,
