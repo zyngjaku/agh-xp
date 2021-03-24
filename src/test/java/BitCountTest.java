@@ -10,7 +10,7 @@ public class BitCountTest {
     void checkNumberOfBits() throws Exception {
         assertEquals(10, bitCounter.noOfBits("123;89"));
         assertEquals(14, bitCounter.noOfBits("123;89 89"));
-        assertEquals(18, bitCounter.noOfBits("123 89;89 89"));
+        assertEquals(18, bitCounter.noOfBits("123\u001a89;89 89"));
 //
 //        Exception thrown = assertThrows(
 //                Exception.class,
