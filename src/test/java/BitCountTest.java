@@ -9,24 +9,21 @@ public class BitCountTest {
 
     @Test
     void checkNumberOfBits() throws Exception {
-        assertEquals(6, bitCounter.noOfBits("123"));
-        assertEquals(2, bitCounter.noOfBits("132"));
-        assertEquals(4, bitCounter.noOfBits("89"));
-        assertEquals(0, bitCounter.noOfBits(""));
-
-        Exception thrown = assertThrows(
-                Exception.class,
-                () -> bitCounter.noOfBits("256"),
-                "Expected doThing() to throw, but it didn't"
-        );
-
-        Exception thrownMinus = assertThrows(
-                Exception.class,
-                () -> bitCounter.noOfBits("-1"),
-                "Expected doThing() to throw, but it didn't"
-        );
-
-        assertEquals(thrown.getMessage(), "Incorrect number");
-        assertEquals(thrownMinus.getMessage(), "Incorrect number");
+        assertEquals(10, bitCounter.noOfBits("123;89"));
+//
+//        Exception thrown = assertThrows(
+//                Exception.class,
+//                () -> bitCounter.noOfBits("256"),
+//                "Expected doThing() to throw, but it didn't"
+//        );
+//
+//        Exception thrownMinus = assertThrows(
+//                Exception.class,
+//                () -> bitCounter.noOfBits("-1"),
+//                "Expected doThing() to throw, but it didn't"
+//        );
+//
+//        assertEquals(thrown.getMessage(), "Incorrect number");
+//        assertEquals(thrownMinus.getMessage(), "Incorrect number");
     }
 }

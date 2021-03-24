@@ -1,23 +1,31 @@
 package com.company;
 
-public class BitCounter {
-    public int noOfBits(String number) throws Exception {
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-        if(number.isEmpty()) {
+public class BitCounter {
+    public int noOfBits(String numbers) throws Exception {
+
+        List<String> numbersList = Arrays.asList(numbers.split(";"));
+
+        List<Integer> numbersListParsed = numbersList.stream().map(Integer::parseInt).collect(Collectors.toList());
+
+
+        if(numbers.isEmpty()) {
             return 0;
         }
 
-        int parsedNumber = Integer.parseInt(number);
-
-        if(parsedNumber > 255 || parsedNumber < 0) {
-            throw new Exception("Incorrect number");
-        }
-
-        String binary = Integer.toBinaryString(parsedNumber);
+//        if(parsedNumber > 255 || parsedNumber < 0) {
+//            throw new Exception("Incorrect number");
+//        }
         int result = 0;
-        for(int i = 0; i < binary.length(); i++) {
-            if(binary.charAt(i) == '1') {
-                result++;
+        for(Integer number : numbersListParsed) {
+            String binary = Integer.toBinaryString(number);
+            for(int i = 0; i < binary.length(); i++) {
+                if(binary.charAt(i) == '1') {
+                    result++;
+                }
             }
         }
         return result;
