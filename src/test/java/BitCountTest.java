@@ -8,8 +8,9 @@ public class BitCountTest {
 
     @Test
     void checkNumberOfBits() throws Exception {
-        assertEquals(10, bitCounter.noOfBits("123 ;      89"));
-        assertEquals(14, bitCounter.noOfBits("123 ;89; 89"));
+        assertEquals(10, bitCounter.noOfBits("123;89"));
+        assertEquals(14, bitCounter.noOfBits("123;89 89"));
+        assertEquals(18, bitCounter.noOfBits("123 89;89 89"));
 //
 //        Exception thrown = assertThrows(
 //                Exception.class,

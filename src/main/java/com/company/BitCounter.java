@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class BitCounter {
     public int noOfBits(String numbers) throws Exception {
 
-        List<String> numbersList = Arrays.asList(numbers.replaceAll(" ", "").split(";"));
+        List<String> numbersList = Arrays.asList(numbers.split(";|\\ "));
 
         List<Integer> numbersListParsed = numbersList.stream().map(Integer::parseInt).collect(Collectors.toList());
 
