@@ -1,7 +1,10 @@
 import com.company.BitCounter;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BitCountTest {
     BitCounter bitCounter = new BitCounter();
@@ -10,21 +13,10 @@ public class BitCountTest {
     void checkNumberOfBits() throws Exception {
         assertEquals(10, bitCounter.noOfBits("123;89"));
         assertEquals(14, bitCounter.noOfBits("123;89 89"));
-        assertEquals(18, bitCounter.noOfBits("123\u001a89;89 89"));
-//
-//        Exception thrown = assertThrows(
-//                Exception.class,
-//                () -> bitCounter.noOfBits("256"),
-//                "Expected doThing() to throw, but it didn't"
-//        );
-//
-//        Exception thrownMinus = assertThrows(
-//                Exception.class,
-//                () -> bitCounter.noOfBits("-1"),
-//                "Expected doThing() to throw, but it didn't"
-//        );
-//
-//        assertEquals(thrown.getMessage(), "Incorrect number");
-//        assertEquals(thrownMinus.getMessage(), "Incorrect number");
+        assertEquals(5, bitCounter.noOfBits("$E9"));
+        assertEquals(15, bitCounter.noOfBits("$E9;123 89"));
+        assertEquals(20, bitCounter.noOfBits("$E9;123 89 $E9"));
+        assertThrows(BitCounter.NumberException.class, () -> bitCounter.noOfBits("256;34"));
+        assertThrows(BitCounter.NumberException.class, () -> bitCounter.noOfBits("-1;34"));
     }
 }

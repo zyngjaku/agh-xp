@@ -5,29 +5,37 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BitCounter {
-    public int noOfBits(String numbers) throws Exception {
+    public int noOfBits(String numbers) throws NumberException {
 
-        List<String> numbersList = Arrays.asList(numbers.replaceAll("\u001a", ";").split(";|\\ "));
-
-        List<Integer> numbersListParsed = numbersList.stream().map(Integer::parseInt).collect(Collectors.toList());
-
-
-        if (numbers.isEmpty()) {
+        if(numbers.isEmpty()) {
             return 0;
         }
 
-//        if(parsedNumber > 255 || parsedNumber < 0) {
-//            throw new Exception("Incorrect number");
-//        }
         int result = 0;
-        for (Integer number : numbersListParsed) {
-            String binary = Integer.toBinaryString(number);
-            for (int i = 0; i < binary.length(); i++) {
-                if (binary.charAt(i) == '1') {
-                    result++;
-                }
+
+        for(String number : numbers.split("[;\\s]")) {
+
+            if(number.startsWith("$")) {
+                result += countOnes(Integer.parseInt(number.substring(1), 16));
+            } else {
+                result += countOnes(Integer.parseInt(number));
             }
         }
         return result;
     }
+
+    private int countOnes(int number) throws NumberException {
+        if (number > 255 || number < 0) {
+            throw new NumberException();
+        }
+        String binary = Integer.toBinaryString(number);
+        int result = 0;
+        for(int i = 0; i < binary.length(); i++) {
+            if(binary.charAt(i) == '1') {
+                result++;
+            }
+        }
+        return result;
+    }
+    public static class NumberException extends Exception {}
 }
