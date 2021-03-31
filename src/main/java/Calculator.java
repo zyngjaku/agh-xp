@@ -1,6 +1,7 @@
+import java.util.ArrayList;
 
 public class Calculator {
-    public int add(String numbers) throws InvalidCalculation {
+    public int add(String numbers) throws ArithmeticException {
         int result = 0;
 
         var delimiters = "[,\\n]";
@@ -14,24 +15,23 @@ public class Calculator {
         if (numbers == null){
             return result;
         }
-
+        var negatives = new ArrayList<String>();
         for (var number : numbers.split(delimiters)){
             try{
                 var n = Integer.parseInt(number);
                 if (n < 0){
-                    throw new InvalidCalculation();
+                    negatives.add(Integer.toString(n));
                 }
                 result += n;
             } catch (Exception e){
-                throw new InvalidCalculation();
+                throw new ArithmeticException();
             }
 
         }
+        if (!negatives.isEmpty()){
+            throw new ArithmeticException("Negatives not allowed - "  + String.join(",", negatives));
+        }
 
         return result;
-    }
-
-    public static class InvalidCalculation extends Exception{
-
     }
 }
