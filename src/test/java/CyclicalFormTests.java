@@ -40,6 +40,22 @@ public class CyclicalFormTests {
         });
     }
 
+    @ParameterizedTest(name = "Amount: {0}")
+    @CsvSource(value = {"5.00", "123.99", "30000.05"})
+    public void whenAddingAmountWithTwoDecimalPlaces_isAccepted(String givenAmount) {
+        var sut = new CyclicalForm();
+        sut.addCyclicalMoneyTransfer(new BigDecimal(givenAmount), 30);
+    }
+
+    @ParameterizedTest(name = "Amount: {0}")
+    @CsvSource(value = {"5.3", "123.1", "30.123", "99.9999"})
+    public void whenAddingAmountWithOneOrMoreThanTwoDecimalPlaces_isRejected(String givenAmount) {
+        var sut = new CyclicalForm();
+        assertThrows(IllegalArgumentException.class, () -> {
+            sut.addCyclicalMoneyTransfer(new BigDecimal(givenAmount), 7);
+        });
+    }
+
     @Test
     public void whenAddingCyclicalMoneyTransfer_newObjectIsAdded() {
         var sut = new CyclicalForm();

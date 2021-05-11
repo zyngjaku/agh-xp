@@ -34,7 +34,11 @@ public class Main {
             } else if (command.startsWith("CYCLICAL")) {
                 //CYCLICAL {VALUE} {DAYS}
                 String[] splitted = command.split(" ");
-                cyclicalForm.addCyclicalMoneyTransfer(new BigDecimal(splitted[1]), Integer.parseInt(splitted[2]));
+                try {
+                    cyclicalForm.addCyclicalMoneyTransfer(new BigDecimal(splitted[1]), Integer.parseInt(splitted[2]));
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid input parameter: " + e.getMessage());
+                }
             }
 
             if (command.equals("END")) {
