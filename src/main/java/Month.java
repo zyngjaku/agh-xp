@@ -1,7 +1,7 @@
 public class Month {
     final int year;
     final int month;
-    long savings;
+    long savings = 0;
 
     public Month(int month, int year){
         this.year = year;
