@@ -12,34 +12,54 @@ public class GoalFormTests {
     @ParameterizedTest(name = "Name: {0}")
     @CsvSource(value = {"Car", "Big house", "dddd"})
     public void whenAddingValidGoalName_isAccepted(String name) {
-        var sut = new GoalForm();
-        sut.addGoal(name, 5.6);
+        var repository = new GoalRepository();
+        var sut = new GoalForm(repository);
+        sut.addGoal(name, BigDecimal.valueOf(5.6));
     }
 
     @ParameterizedTest(name = "Amount: {0}")
     @CsvSource(value = {"5.2", "2000"})
-    public void whenAddingValidGoalAmou_isAccepted(double amount) {
-        var sut = new GoalForm();
-        sut.addGoal("House", amount);
+    public void whenAddingValidGoalAmount_isAccepted(double amount) {
+        var repository = new GoalRepository();
+        var sut = new GoalForm(repository);
+        sut.addGoal("House", BigDecimal.valueOf(amount));
     }
 
 
     @ParameterizedTest(name = "Amount: {0}")
     @CsvSource(value = {"0.0", "-10.99"})
     public void whenGoalTotalIsNotPositive_isRejected(double amount) {
-        var sut = new GoalForm();
+        var repository = new GoalRepository();
+        var sut = new GoalForm(repository);
         assertThrows(IllegalArgumentException.class, () -> {
-            sut.addGoal("Invalid goal", amount);
+            sut.addGoal("car", BigDecimal.valueOf(amount));
         });
     }
 
-    @ParameterizedTest(name = "Amount: {0}")
-    @CsvSource(value = {"5.3", "123.1", "30.123", "99.9999"})
-    public void whenAddingAmountWithOneOrMoreThanTwoDecimalPlaces_isRejected(String givenAmount) {
-        var sut = new CyclicalForm();
+    @Test
+    public void whenGoalNameIsEmptyString_isRejected() {
+        var repository = new GoalRepository();
+        var sut = new GoalForm(repository);
         assertThrows(IllegalArgumentException.class, () -> {
-            sut.addCyclicalMoneyTransfer(new BigDecimal(givenAmount), 7);
+            sut.addGoal("", BigDecimal.valueOf(24021.12));
         });
+    }
+
+    @Test
+    public void whenTitleIsNull_isRejected() {
+        var repository = new GoalRepository();
+        var sut = new GoalForm(repository);
+        assertThrows(IllegalArgumentException.class, () -> {
+            sut.addGoal(null, BigDecimal.valueOf(123.456));
+        });
+    }
+
+    @Test
+    public void whenAddingValidGoal_goalIsAddedToArray() {
+        var repository = new GoalRepository();
+        var sut = new GoalForm(repository);
+        sut.addGoal("some goal", BigDecimal.valueOf(71.6));
+        assertEquals(1, repository.getAll().size());
     }
 
 }

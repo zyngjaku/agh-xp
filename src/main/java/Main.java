@@ -8,13 +8,13 @@ public class Main {
         var arguments = Arrays.asList(args);
         if (arguments.contains("goalsummary")) {
             var goals = Arrays.asList(
-                    new Goal("Car", 222),
-                    new Goal("House", 2222)
+                    new Goal("Car", BigDecimal.valueOf(212.2)),
+                    new Goal("House", BigDecimal.valueOf(20003.99))
             );
 
             for (var goal : goals) {
                 try {
-                    System.out.println(new GoalSummary(goal, 2000).getSummary());
+                    System.out.println(new GoalSummary(goal, BigDecimal.valueOf(290.1)).getSummary());
                 } catch (InvalidParameterException e) {
                     e.printStackTrace();
                 }

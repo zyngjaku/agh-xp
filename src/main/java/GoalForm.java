@@ -1,16 +1,18 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class GoalForm {
-    public ArrayList<Goal> goals;
 
-    public GoalForm() {
-        goals = new ArrayList<>();
+    private final GoalRepository goalRepository;
+
+    public GoalForm(GoalRepository goalRepository) {
+        this.goalRepository = goalRepository;
     }
 
-    public void addGoal(String name, double amount) {
+    public void addGoal(String name, BigDecimal amount) {
         var goal = new Goal(name, amount);
-        goals.add(goal);
+        goalRepository.add(goal);
     }
 }
