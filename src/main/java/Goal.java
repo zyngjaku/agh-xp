@@ -1,17 +1,28 @@
+import java.math.BigDecimal;
+
 public class Goal {
     private String title;
-    private double total;
+    private BigDecimal total;
 
-    public Goal(String title, double total) {
-        this.title = title;
-        this.total = total;
+    public Goal(String title, BigDecimal total) {
+        if (title == null || title.equals("")) {
+            throw new IllegalArgumentException("Goal name is null or empty string");
+        } else {
+            this.title = title;
+        }
+
+        if (total.compareTo(BigDecimal.ZERO) > 0) {
+            this.total = total;
+        } else {
+            throw new IllegalArgumentException("Negative or zero goal amount");
+        }
     }
 
     public String getTitle() {
         return title;
     }
 
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 }
