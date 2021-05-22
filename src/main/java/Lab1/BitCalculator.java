@@ -1,4 +1,4 @@
-
+package Lab1;
 
 public class BitCalculator {
     public int noOfBits1(String numbers) throws InvalidCalculation {

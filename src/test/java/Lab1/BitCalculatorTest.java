@@ -1,3 +1,6 @@
+package Lab1;
+
+import Lab1.BitCalculator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
