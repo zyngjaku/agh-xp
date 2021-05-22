@@ -7,8 +7,8 @@ public class GoalSummary {
     private final Goal goal;
 
     public GoalSummary(Goal goal, BigDecimal funds) throws InvalidParameterException {
-        if (funds.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new InvalidParameterException("funds has to be positive");
+        if (funds.compareTo(BigDecimal.ZERO) < 0) {
+            throw new InvalidParameterException("funds has to be non-negative");
         }
         this.funds = funds;
         this.goal = goal;
