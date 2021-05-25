@@ -21,4 +21,9 @@ public class CyclicalMoneyTransferFitnesseTest {
         CyclicalMoneyTransfer cyclicalMoneyTransfer = new CyclicalMoneyTransfer(this.amount, this.days);
         return cyclicalMoneyTransfer.getDays();
     }
+
+    public String toString() {
+        CyclicalMoneyTransfer cyclicalMoneyTransfer = new CyclicalMoneyTransfer(this.amount, this.days);
+        return cyclicalMoneyTransfer.toString();
+    }
 }
