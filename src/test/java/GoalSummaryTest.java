@@ -12,7 +12,7 @@ public class GoalSummaryTest {
     public void getSummary_ReturnsCorrectStringForSummaryWithNotCompletedGoal() throws Exception {
         var goalSummary = new GoalSummary(new Goal("House", BigDecimal.valueOf(6000)), BigDecimal.valueOf(3000));
         var result = goalSummary.getSummary();
-        var expected = "House: 3000.00/6000.00 PLN remaining";
+        var expected = "House: 3000,00/6000,00 PLN remaining";
         assertEquals(expected, result);
     }
 
