@@ -8,6 +8,12 @@ public class Month {
         this.month = month;
     }
 
+    public Month(int month, int year, long savings){
+        this.year = year;
+        this.month = month;
+        this.savings = savings;
+    }
+
     public long getSavings(){
         return this.savings;
     }

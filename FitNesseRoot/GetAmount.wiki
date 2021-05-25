@@ -1,0 +1,11 @@
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+
+!path /Users/dawidplesniarski/Desktop/Studia AGH/Programowanie Ekstremalne/agh-xp/target/classes
+
+!|CyclicalMoneyTransferFitnesseTest|
+|amount | days | getAmountTest? |
+| 5000 | 40 | 5000 |
+
+
+
