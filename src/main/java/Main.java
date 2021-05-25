@@ -12,8 +12,7 @@ public class Main {
             }
             try {
                 view.execute();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }

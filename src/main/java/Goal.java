@@ -1,8 +1,8 @@
 import java.math.BigDecimal;
 
 public class Goal {
-    private String title;
-    private BigDecimal total;
+    private final String title;
+    private final BigDecimal total;
 
     public Goal(String title, BigDecimal total) {
         if (title == null || title.equals("")) {

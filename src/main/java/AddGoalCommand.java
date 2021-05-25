@@ -1,6 +1,4 @@
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class AddGoalCommand {
@@ -20,8 +18,7 @@ public class AddGoalCommand {
             var title = words[0];
             var total = new BigDecimal(words[1]);
             goalRepository.add(new Goal(title, total));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("Invalid input format: " + e.getMessage());
         }
     }

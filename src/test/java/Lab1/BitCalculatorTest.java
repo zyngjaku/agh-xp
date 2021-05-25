@@ -1,6 +1,5 @@
 package Lab1;
 
-import Lab1.BitCalculator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -68,7 +67,7 @@ public class BitCalculatorTest {
     })
     public void noOfBits1_CountsOnes_WithMultipleNumbersDelimitedByWhitespace(String calculation, int expected) throws BitCalculator.InvalidCalculation {
         var sut = new BitCalculator();
-        calculation = calculation.replace('%','\n');
+        calculation = calculation.replace('%', '\n');
         var result = sut.noOfBits1(calculation);
 
         assertEquals(expected, result);
@@ -93,7 +92,7 @@ public class BitCalculatorTest {
     })
     public void noOfBits1_CountsOnes_WithMultipleNumbersInDecimalAndHexadecimal(String calculation, int expected) throws BitCalculator.InvalidCalculation {
         var sut = new BitCalculator();
-        calculation = calculation.replace('%','\n');
+        calculation = calculation.replace('%', '\n');
         var result = sut.noOfBits1(calculation);
 
         assertEquals(expected, result);

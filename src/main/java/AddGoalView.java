@@ -15,8 +15,7 @@ public class AddGoalView implements View {
         var scanner = new Scanner(System.in);
         try {
             addGoalCommand.addGoal(scanner.nextLine());
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

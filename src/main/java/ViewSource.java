@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class ViewSource {
     private final InputSource inputSource;
     private final RepositoryProvider repositoryProvider;

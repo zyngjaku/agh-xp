@@ -5,7 +5,7 @@ public class AddCyclicalItemCommand {
         this.cyclicalItemRepository = cyclicalItemRepository;
     }
 
-    private final Repository<CyclicalMoneyTransfer>  cyclicalItemRepository;
+    private final Repository<CyclicalMoneyTransfer> cyclicalItemRepository;
 
     public void addCyclicalItem(String input) {
         var words = input.split(" ");
@@ -16,8 +16,7 @@ public class AddCyclicalItemCommand {
             var amount = new BigDecimal(words[0]);
             var days = Integer.parseInt(words[1]);
             cyclicalItemRepository.add(new CyclicalMoneyTransfer(amount, days));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("Invalid input format: " + e.getMessage());
         }
     }
