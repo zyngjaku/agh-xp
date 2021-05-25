@@ -3,8 +3,7 @@ Test
 ---
 !contents -R2 -g -p -f -h
 !define TEST_SYSTEM {slim}
-!path C:\Users\Resident\IdeaProjects\agh-xp\target\classes
-!path C:\Program Files\AdoptOpenJDK\jdk-11.0.10.9-hotspot!\java.base\java\math\BigDecimal.class
+!path target\classes
 
 !|GoalSummaryFitnesseTest| 
 |title|total|funds|getSummaryTest?|

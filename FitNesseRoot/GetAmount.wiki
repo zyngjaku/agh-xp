@@ -1,11 +1,16 @@
+---
+Test
+---
 !contents -R2 -g -p -f -h
 !define TEST_SYSTEM {slim}
 
-!path /Users/dawidplesniarski/Desktop/Studia AGH/Programowanie Ekstremalne/agh-xp/target/classes
+!path target/classes
 
 !|CyclicalMoneyTransferFitnesseTest|
 |amount | days | getAmountTest? |
 | 5000 | 40 | 5000 |
-
+| 3145 | 50 | 3145 |
+| 1000000000 | 909090909 | 1000000000 |
+| 0	|	10	|  EXCEPTION:=~/Money amount cannot be zero./|
 
 
