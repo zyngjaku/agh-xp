@@ -1,14 +1,12 @@
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SavingsLogicTests {
 
-    Month month1 = new Month(12,2020);
-    Month month2 = new Month(1,2021);
-    Month month3 = new Month(2,2021);
+    Month month1 = new Month(12, 2020);
+    Month month2 = new Month(1, 2021);
+    Month month3 = new Month(2, 2021);
 
     @Test
     public void sum_SumValuesOfNMonthsExpectsPositiveSum() throws ArithmeticException {
