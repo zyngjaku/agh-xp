@@ -1,0 +1,9 @@
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+
+!path target/classes
+
+!|GoalSummaryCommandFitnesseTest|
+|titles|value|getSummaryText?|
+|Samochód|20000|Samochód: 20000,00/20000,00 PLN remaining|
+|Samochód,Lodówka|20000,1000|Samochód: 20000,00/20000,00 PLN remainingLodówka: 1000,00/1000,00 PLN remaining|

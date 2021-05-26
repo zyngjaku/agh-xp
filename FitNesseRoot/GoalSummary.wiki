@@ -1,0 +1,11 @@
+---
+Test
+---
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+!path target\classes
+
+!|GoalSummaryFitnesseTest| 
+|title|total|funds|getSummaryTest?|
+|auto|5000|1000|auto: 4000,00/5000,00 PLN remaining|
+|miłość|298|500|miłość: completed|

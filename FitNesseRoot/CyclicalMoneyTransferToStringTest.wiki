@@ -1,0 +1,8 @@
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+
+!path target/classes
+
+!|CyclicalMoneyTransferFitnesseTest|
+|amount | days | toString? |
+| 5000 | 40 | [CYCLICAL] Amount 5000 every 40 days. |

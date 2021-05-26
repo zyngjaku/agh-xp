@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 public class Main {
     public static void main(String[] args) {
         var repositories = new RepositoryProvider();
@@ -12,7 +14,8 @@ public class Main {
             }
             try {
                 view.execute();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
