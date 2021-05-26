@@ -17,50 +17,57 @@ public class ViewSourceTest {
     @Test
     public void viewSource_ReturnsInvalidViewForNullLine() {
         when(inputSourceMock.read()).thenReturn(null);
-        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider());
+        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider(), new SettingsProvider());
         assertTrue(sut.processNextCommand() instanceof InvalidInputView);
     }
 
     @Test
     public void viewSource_ReturnsInvalidViewForNotExistentCommand() {
         when(inputSourceMock.read()).thenReturn("nonexistent command");
-        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider());
+        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider(), new SettingsProvider());
         assertTrue(sut.processNextCommand() instanceof InvalidInputView);
     }
 
     @Test
     public void viewSource_ReturnsCorrectObjectForHelpCommand() {
         when(inputSourceMock.read()).thenReturn("help");
-        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider());
+        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider(), new SettingsProvider());
         assertTrue(sut.processNextCommand() instanceof HelpView);
     }
 
     @Test
     public void viewSource_ReturnsCorrectObjectForAddGoalCommand() {
         when(inputSourceMock.read()).thenReturn("addgoal");
-        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider());
+        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider(), new SettingsProvider());
         assertTrue(sut.processNextCommand() instanceof AddGoalView);
     }
 
     @Test
     public void viewSource_ReturnsCorrectObjectForAddCyclicalCommand() {
         when(inputSourceMock.read()).thenReturn("addcyclical");
-        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider());
+        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider(), new SettingsProvider());
         assertTrue(sut.processNextCommand() instanceof AddCyclicalItemView);
     }
 
     @Test
     public void viewSource_ReturnsCorrectObjectForAddGoalSummary() {
         when(inputSourceMock.read()).thenReturn("goalsummary");
-        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider());
+        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider(), new SettingsProvider());
         assertTrue(sut.processNextCommand() instanceof GoalSummaryView);
     }
 
     @Test
     public void viewSource_ReturnsNullObjectForQuitCommand() {
         when(inputSourceMock.read()).thenReturn("quit");
-        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider());
+        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider(), new SettingsProvider());
         assertNull(sut.processNextCommand());
+    }
+
+    @Test
+    public void viewSource_ReturnsCorrectObjectForSettings() {
+        when(inputSourceMock.read()).thenReturn("settings");
+        var sut = new ViewSource(inputSourceMock, repositoryProvider, new BalanceProvider(), new SettingsProvider());
+        assertTrue(sut.processNextCommand() instanceof SettingsView);
     }
 }
 
