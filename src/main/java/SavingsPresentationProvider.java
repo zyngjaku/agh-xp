@@ -6,10 +6,10 @@ public class SavingsPresentationProvider {
         this.currency = currency;
     }
 
-    public String getRepresentation(long value){
+    public String getRepresentation(long value) {
         long rest = Math.abs(value % 100);
-        String minus = (value < 0) ? "-": "";
-        value = Math.abs(value/100);
-        return String.format("%s%d.%02d %s",minus,value,rest,currency);
+        String minus = (value < 0) ? "-" : "";
+        value = Math.abs(value / 100);
+        return String.format("%s%d.%02d %s", minus, value, rest, currency);
     }
 }

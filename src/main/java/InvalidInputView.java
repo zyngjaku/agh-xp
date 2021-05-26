@@ -1,4 +1,3 @@
-
 public class InvalidInputView implements View {
     private final String reason;
 

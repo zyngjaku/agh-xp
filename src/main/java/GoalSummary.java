@@ -14,7 +14,7 @@ public class GoalSummary {
         this.goal = goal;
     }
 
-    public String getSummary(){
+    public String getSummary() {
         var remaining = goal.getTotal().subtract(funds);
         if (remaining.compareTo(BigDecimal.ZERO) > 0) {
             return String.format("%s: %.2f/%.2f PLN remaining", goal.getTitle(), remaining, goal.getTotal());

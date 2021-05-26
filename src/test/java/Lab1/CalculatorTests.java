@@ -1,6 +1,5 @@
 package Lab1;
 
-import Lab1.Calculator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -56,7 +55,7 @@ public class CalculatorTests {
         try {
             sut.add(calculation);
             fail();
-        } catch(ArithmeticException e) {
+        } catch (ArithmeticException e) {
             assertEquals(e.getMessage(), "Negatives not allowed - " + exception);
         }
     }

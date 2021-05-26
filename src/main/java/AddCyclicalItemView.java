@@ -15,8 +15,7 @@ public class AddCyclicalItemView implements View {
         var scanner = new Scanner(System.in);
         try {
             addCyclicalItemCommand.addCyclicalItem(scanner.nextLine());
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

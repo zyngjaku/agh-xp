@@ -9,16 +9,16 @@ public class BitCalculator {
             var result = 0;
             for (var nb : numbers.split("[;\\s]")) {
                 int n;
-                if (nb.startsWith("$")){
+                if (nb.startsWith("$")) {
                     n = Integer.parseInt(nb.substring(1), 16);
-                } else{
+                } else {
                     n = Integer.parseInt(nb);
                 }
                 result += getOnes(n);
             }
 
             return result;
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new InvalidCalculation();
         }
     }
@@ -38,7 +38,7 @@ public class BitCalculator {
         return result;
     }
 
-    public static class InvalidCalculation extends Exception{
+    public static class InvalidCalculation extends Exception {
 
     }
 }
