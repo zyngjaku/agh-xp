@@ -2,11 +2,17 @@ public class ViewSource {
     private final InputSource inputSource;
     private final RepositoryProvider repositoryProvider;
     private final BalanceProvider balanceProvider;
+    private final SettingsProvider settingsProvider;
 
-    public ViewSource(InputSource inputSource, RepositoryProvider repositoryProvider, BalanceProvider balanceProvider) {
+    public ViewSource(InputSource inputSource, RepositoryProvider repositoryProvider, BalanceProvider balanceProvider, SettingsProvider settingsProvider) {
         this.inputSource = inputSource;
         this.repositoryProvider = repositoryProvider;
         this.balanceProvider = balanceProvider;
+        this.settingsProvider = settingsProvider;
+    }
+
+    public View getSettingsView() {
+        return new SettingsView(new SettingsCommand(settingsProvider));
     }
 
     public View processNextCommand() {
@@ -30,6 +36,9 @@ public class ViewSource {
         }
         if (command.equals("goalsummary")) {
             return new GoalSummaryView(new GoalSummaryCommand(balanceProvider, repositoryProvider.getGoalRepository()));
+        }
+        if (command.equals("settings")) {
+            return getSettingsView();
         }
         if (command.equals("quit")) {
             return null;
