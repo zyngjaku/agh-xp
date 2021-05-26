@@ -9,5 +9,8 @@
         <module name="agh-xp" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="agh-xp" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
