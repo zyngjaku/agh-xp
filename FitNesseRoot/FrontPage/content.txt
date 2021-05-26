@@ -17,3 +17,5 @@ SavingsLogic
 GetAmount
 GetDaysTest
 GoalTotalAmountTest
+CyclicalMoneyTransferToStringTest
+GoalTotalAmountTest

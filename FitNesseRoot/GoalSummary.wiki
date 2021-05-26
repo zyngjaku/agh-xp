@@ -8,4 +8,4 @@ Test
 !|GoalSummaryFitnesseTest| 
 |title|total|funds|getSummaryTest?|
 |auto|5000|1000|auto: 4000,00/5000,00 PLN remaining|
-|milosc|298|500|milosc: completed|
+|miłość|298|500|miłość: completed|
