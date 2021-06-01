@@ -40,6 +40,9 @@ public class ViewSource {
         if (command.equals("settings")) {
             return getSettingsView();
         }
+        if (command.equals("addincome")) {
+            return new AddIncomeView(new AddIncomeCommand(balanceProvider, repositoryProvider.getIncomeRepository()));
+        }
         if (command.equals("quit")) {
             return null;
         }
