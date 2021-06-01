@@ -4,8 +4,9 @@ public class Main {
         repositories.setGoalRepository(new Repository<>());
         repositories.setCyclicalItemRepository(new Repository<>());
         repositories.setIncomeRepository(new Repository<>());
-        var serializer = new SettingsProvider();
-        var viewSource = new ViewSource(new StdinInputSource(), repositories, new BalanceProvider(), serializer);
+        var settingsProvider = new SettingsProvider();
+        var viewSource = new ViewSource(new StdinInputSource(), repositories, new BalanceProvider(), settingsProvider);
+
 
         try {
             viewSource.getSettingsView().execute();
