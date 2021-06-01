@@ -43,6 +43,9 @@ public class ViewSource {
         if (command.equals("addincome")) {
             return new AddIncomeView(new AddIncomeCommand(balanceProvider, repositoryProvider.getIncomeRepository()));
         }
+        if (command.equals("addexpense")) {
+            return new AddExpenseView(new AddExpenseCommand(balanceProvider, repositoryProvider.getExpenseRepository()));
+        }
         if (command.equals("quit")) {
             return null;
         }
