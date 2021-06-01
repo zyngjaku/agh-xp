@@ -4,21 +4,22 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-
-public class AddIncomeCommand {
+public class AddExpenseCommand {
     private final BalanceProvider balanceProvider;
-    private final Repository<Income> incomeRepository;
+    private final Repository<Expense> expenseRepository;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    public AddIncomeCommand(BalanceProvider balanceProvider, Repository<Income> incomeRepository) {
+
+    public AddExpenseCommand(BalanceProvider balanceProvider, Repository<Expense> expenseRepository) {
         this.balanceProvider = balanceProvider;
-        this.incomeRepository = incomeRepository;
+        this.expenseRepository = expenseRepository;
     }
 
-    public void addIncome(String input) {
+
+    public void addExpense(String input) {
         try {
             input = input.trim();
             if (input.isEmpty()) {
-                throw new IllegalArgumentException("Income input cannot be empty");
+                throw new IllegalArgumentException("Expense input cannot be empty");
             }
 
             var split = input.split(" ");
@@ -29,9 +30,9 @@ public class AddIncomeCommand {
                 date = dateFormat.parse(split[1]);
             }
 
-            var income = new Income(new BigDecimal(split[0]), date);
-            balanceProvider.addToBalance(income.getValue());
-            incomeRepository.add(income);
+            var expense = new Expense(new BigDecimal(split[0]), date);
+            balanceProvider.removeFromBalance(expense.getValue());
+            expenseRepository.add(expense);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
         } catch (Exception e) {

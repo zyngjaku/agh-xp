@@ -10,4 +10,7 @@ public class BalanceProvider {
         balance = balance.add(value);
     }
 
+    public void removeFromBalance(BigDecimal value) {
+        balance = balance.subtract(value);
+    }
 }

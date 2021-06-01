@@ -2,6 +2,7 @@ public class RepositoryProvider {
     private Repository<CyclicalMoneyTransfer> cyclicalItemRepository;
     private Repository<Goal> goalRepository;
     private Repository<Income> incomeRepository;
+    private Repository<Expense> expenseRepository;
 
     public Repository<Goal> getGoalRepository() {
         return goalRepository;
@@ -25,5 +26,13 @@ public class RepositoryProvider {
 
     public Repository<Income> getIncomeRepository() {
         return incomeRepository;
+    }
+
+    public Repository<Expense> getExpenseRepository() {
+        return expenseRepository;
+    }
+
+    public void setExpenseRepository(Repository<Expense> expenseRepository) {
+        this.expenseRepository = expenseRepository;
     }
 }

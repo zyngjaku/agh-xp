@@ -4,6 +4,7 @@ public class Main {
         repositories.setGoalRepository(new Repository<>());
         repositories.setCyclicalItemRepository(new Repository<>());
         repositories.setIncomeRepository(new Repository<>());
+        repositories.setExpenseRepository(new Repository<>());
         var settingsProvider = new SettingsProvider();
         var viewSource = new ViewSource(new StdinInputSource(), repositories, new BalanceProvider(), settingsProvider);
 
