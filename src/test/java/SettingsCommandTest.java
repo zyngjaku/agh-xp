@@ -13,7 +13,7 @@ public class SettingsCommandTest {
     SettingsProvider settingsProvider;
 
     @Test
-    public void whenEmptyStringIsInput_noSerializationIsMade() {
+    public void whenEmptyStringIsInput_noSerializationIsMade() throws SerializationException {
         var sut = new SettingsCommand(settingsProvider);
         sut.handleInput("");
         verify(settingsProvider, times(0)).deserialize(any());
@@ -21,7 +21,7 @@ public class SettingsCommandTest {
     }
 
     @Test
-    public void whenLoadCommandIsInput_DeserializationIsMade() {
+    public void whenLoadCommandIsInput_DeserializationIsMade() throws SerializationException {
         var sut = new SettingsCommand(settingsProvider);
         sut.handleInput("load file");
         verify(settingsProvider, times(1)).deserialize(any());
@@ -29,7 +29,7 @@ public class SettingsCommandTest {
     }
 
     @Test
-    public void whenSaveCommandIsInput_SerializationIsMade() {
+    public void whenSaveCommandIsInput_SerializationIsMade() throws SerializationException {
         var sut = new SettingsCommand(settingsProvider);
         sut.handleInput("save file");
         verify(settingsProvider, times(0)).deserialize(any());

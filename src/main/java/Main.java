@@ -3,8 +3,8 @@ public class Main {
         var repositories = new RepositoryProvider();
         repositories.setGoalRepository(new Repository<>());
         repositories.setCyclicalItemRepository(new Repository<>());
-        var serializer = new SettingsProvider();
-        var viewSource = new ViewSource(new StdinInputSource(), repositories, new BalanceProvider(), serializer);
+        var settingsProvider = new SettingsProvider();
+        var viewSource = new ViewSource(new StdinInputSource(), repositories, new BalanceProvider(), settingsProvider);
 
         try {
             viewSource.getSettingsView().execute();

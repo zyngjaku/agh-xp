@@ -20,10 +20,14 @@ public class SettingsCommand {
             }
             var serializer = new Serializer(split[1]);
 
-            if (cmd.equals("save")) {
-                settingsProvider.serialize(serializer);
-            } else {
-                settingsProvider.deserialize(serializer);
+            try {
+                if (cmd.equals("save")) {
+                    settingsProvider.serialize(serializer);
+                } else {
+                    settingsProvider.deserialize(serializer);
+                }
+            } catch (SerializationException exc) {
+                System.out.println("Failed to load or save settings: " + exc.getMessage());
             }
         }
     }

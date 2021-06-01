@@ -18,11 +18,13 @@ public class SettingsProvider {
         this.language = language;
     }
 
-    public void deserialize(Serializer serializer) {
-
+    public void deserialize(Serializer serializer) throws SerializationException {
+        var newSettings = serializer.loadFromFile();
+        setCurrency(newSettings.getCurrency());
+        setLanguage(newSettings.getLanguage());
     }
 
-    public void serialize(Serializer serializer) {
-
+    public void serialize(Serializer serializer) throws SerializationException {
+        serializer.writeToFile(this);
     }
 }
