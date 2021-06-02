@@ -46,6 +46,9 @@ public class ViewSource {
         if (command.equals("addexpense")) {
             return new AddExpenseView(new AddExpenseCommand(balanceProvider, repositoryProvider.getExpenseRepository()));
         }
+        if (command.equals("lastexpenses")) {
+            return new LastExpensesHistoryView();
+        }
         if (command.equals("quit")) {
             return null;
         }

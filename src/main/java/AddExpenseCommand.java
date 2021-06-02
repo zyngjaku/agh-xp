@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class AddExpenseCommand {
     private final BalanceProvider balanceProvider;
-    private final Repository<Expense> expenseRepository;
+    private static Repository<Expense> expenseRepository;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
     public AddExpenseCommand(BalanceProvider balanceProvider, Repository<Expense> expenseRepository) {
@@ -38,5 +38,8 @@ public class AddExpenseCommand {
         } catch (Exception e) {
             throw new IllegalArgumentException("Could not parse input");
         }
+    }
+    public static Repository<Expense> getExpenseRepository() {
+        return expenseRepository;
     }
 }
