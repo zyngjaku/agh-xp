@@ -1,8 +1,8 @@
 import java.math.BigDecimal;
 
 public class BalanceProvider {
-    BigDecimal balance = BigDecimal.ZERO;
-    public BigDecimal getBalance() {
+    private static BigDecimal balance = BigDecimal.ZERO;
+    public static BigDecimal getBalance() {
         return balance;
     }
 
