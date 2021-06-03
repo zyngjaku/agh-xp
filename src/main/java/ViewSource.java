@@ -49,6 +49,9 @@ public class ViewSource {
         if (command.equals("lastexpenses")) {
             return new LastExpensesHistoryView();
         }
+        if (command.equals("checkbalance")) {
+            return new BalanceView();
+        }
         if (command.equals("quit")) {
             return null;
         }

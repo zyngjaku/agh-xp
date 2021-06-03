@@ -4,7 +4,7 @@ public class HelpView implements View {
 
     @Override
     public void execute() {
-        var text = "Supported commands (case insensitive): AddIncome, AddExpense, AddCyclical, AddGoal, GoalSummary, Settings, LastExpenses, Help, Quit";
+        var text = "Supported commands (case insensitive): AddIncome, AddExpense, AddCyclical, AddGoal, GoalSummary, Settings, LastExpenses, CheckBalance, Help, Quit";
         System.out.println(text);
     }
 }
