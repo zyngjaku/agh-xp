@@ -29,10 +29,11 @@ public class LastExpensesHistoryCommandTest {
     }
 
     @Test
-    public void whenTheNumberOfExpensesIsLessThanPassedArgument_thenThrowException() throws ParseException {
+    public void whenTheNumberOfExpensesIsLessThanPassedArgument_thenReturnAllExpenses() throws ParseException {
         addExpenses();
         var expenses = LastExpensesHistoryCommand.getLastExpenses("6", expensesList);
-        assertThrows(NullPointerException.class, () -> expenses.size());
+        assert expenses != null;
+        assertEquals(expenses.size(), 5);
     }
 
     @Test
