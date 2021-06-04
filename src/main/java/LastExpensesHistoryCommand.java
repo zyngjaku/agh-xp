@@ -12,7 +12,8 @@ public class LastExpensesHistoryCommand {
     public static List<Expense> getLastExpenses(String number, List<Expense> expensesList) {
         try {
             var amount = Integer.parseInt(number);
-            return (amount > 0 && amount <= expensesList.size()) ? expensesList.subList(expensesList.size() - amount, expensesList.size()) : null;
+            //return (amount > 0 && amount <= expensesList.size()) ? expensesList.subList(expensesList.size() - amount, expensesList.size()) : null;
+            return (amount > 0) ? ((amount <= expensesList.size()) ? expensesList.subList(expensesList.size() - amount, expensesList.size()) : expensesList) : null;
         } catch (IllegalArgumentException e) {
             return null;
         }
