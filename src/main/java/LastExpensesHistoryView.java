@@ -8,11 +8,11 @@ public class LastExpensesHistoryView implements View {
 
         try {
             var expensesList = AddExpenseCommand.getExpenseRepository().getAll();
-            for(Expense ex : Objects.requireNonNull(LastExpensesHistory.getLastExpenses(scanner.nextLine(), expensesList))) {
+            for(Expense ex : Objects.requireNonNull(LastExpensesHistoryCommand.getLastExpenses(scanner.nextLine(), expensesList))) {
                 System.out.println("Amount: " + ex.getValue() + " Date:" + ex.getDate());
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("No expenses history");
         }
     }
 }
