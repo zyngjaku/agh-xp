@@ -17,7 +17,7 @@ public class ExpensesWithinDaysCommand {
                 date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
     }
 
-    public String getExpansesHistory(String input) {
+    public String getExpensesHistory(String input) {
         try {
             input = input.trim();
             if (input.isEmpty()) {
@@ -29,6 +29,10 @@ public class ExpensesWithinDaysCommand {
             Date now = new Date();
             BigDecimal sum = BigDecimal.ZERO;
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+
+            if (days < 0) {
+                throw new IllegalArgumentException("The number of days must be greater than 0");
+            }
 
             for (Expense expense : expenseRepository.getAll()) {
                 Date expenseDate = expense.getDate();
@@ -44,7 +48,7 @@ public class ExpensesWithinDaysCommand {
             if (builder.length() != 0) {
                 builder.append("Sum of expanses: ").append(sum.intValue()).append("\n");
             } else {
-                builder.append("No expanses");
+                builder.append("No expanses\n");
             }
 
             return builder.toString();

@@ -28,6 +28,10 @@ public class ExpensesInMonthCommand {
                 year = Integer.parseInt(split[1]);
             }
 
+            if (month > 12) {
+                throw new IllegalArgumentException("Invalid number of month");
+            }
+
             var builder = new StringBuilder();
             Calendar calendar = Calendar.getInstance();
             BigDecimal sum = BigDecimal.ZERO;
@@ -46,7 +50,7 @@ public class ExpensesInMonthCommand {
             if (builder.length() != 0) {
                 builder.append("Sum of expanses: ").append(sum.intValue()).append("\n");
             } else {
-                builder.append("No expanses in this month");
+                builder.append("No expanses in this month\n");
             }
 
             return builder.toString();
