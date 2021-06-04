@@ -84,6 +84,64 @@ public class BalanceCalculatorTests {
         assertEquals(expectedBalance, actualBalance);
     }
 
+    @Test
+    void givenRecentCyclicalTransfer_transferAmountIsSubtractedOnce() throws ParseException {
+        var givenTransferAmount = BigDecimal.valueOf(100);
+        var givenTransferFirstDate = getDateFrom("17-06-2020");
+
+        var sut = new BalanceCalculatorBuilder()
+                .withCyclicalMoneyTransfer(new CyclicalMoneyTransfer(givenTransferAmount, 30, givenTransferFirstDate))
+                .build();
+
+        var expectedBalance = givenTransferAmount;
+        var actualBalance = sut.getBalance(getSampleDate());
+        assertEquals(expectedBalance, actualBalance);
+    }
+
+    @Test
+    void givenTwoRecentCyclicalTransfers_returnExpectedBalance() throws ParseException {
+        var givenFirstAmount = BigDecimal.valueOf(100);
+        var givenOtherAmount = BigDecimal.valueOf(-333);
+        var givenTransferFirstDate = getDateFrom("17-06-2020");
+        var givenTransferOtherDate = getDateFrom("19-06-2020");
+
+        var sut = new BalanceCalculatorBuilder()
+                .withCyclicalMoneyTransfer(new CyclicalMoneyTransfer(givenFirstAmount, 30, givenTransferFirstDate))
+                .withCyclicalMoneyTransfer(new CyclicalMoneyTransfer(givenOtherAmount, 7, givenTransferOtherDate))
+                .build();
+
+        var expectedBalance = givenFirstAmount.add(givenOtherAmount);
+        var actualBalance = sut.getBalance(getSampleDate());
+        assertEquals(expectedBalance, actualBalance);
+    }
+
+    @Test
+    void givenOldCyclicalTransferThatShouldBeCountedTwice_returnExpectedBalance() throws ParseException {
+        var givenTransferAmount = BigDecimal.valueOf(-100);
+        var givenTransferDate = getDateFrom("15-05-2020");
+
+        var sut = new BalanceCalculatorBuilder()
+                .withCyclicalMoneyTransfer(new CyclicalMoneyTransfer(givenTransferAmount, 30, givenTransferDate))
+                .build();
+
+        var expectedBalance = BigDecimal.valueOf(-200);
+        var actualBalance = sut.getBalance(getSampleDate());
+        assertEquals(expectedBalance, actualBalance);
+    }
+
+    @Test
+    void givenCyclicalTransferFromTheFuture_returnUnaffectedBalance() throws ParseException {
+        var givenTransferAmount = BigDecimal.valueOf(-100);
+        var givenTransferDate = getDateFrom("15-05-2031");
+
+        var sut = new BalanceCalculatorBuilder()
+                .withCyclicalMoneyTransfer(new CyclicalMoneyTransfer(givenTransferAmount, 30, givenTransferDate))
+                .build();
+
+        var actualBalance = sut.getBalance(getSampleDate());
+        assertEquals(BigDecimal.ZERO, actualBalance);
+    }
+
     private Date getDateFrom(String date) throws ParseException {
         return dateFormat.parse(date);
     }

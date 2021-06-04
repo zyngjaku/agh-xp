@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 
 public class BalanceCalculator {
@@ -25,10 +26,30 @@ public class BalanceCalculator {
                 .map(Expense::getValue)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        return totalIncome.subtract(totalExpense);
+        var cyclicalTransfers = cyclicalMoneyTransferRepository.getAll();
+        var totalCyclicalContribution = cyclicalTransfers.stream()
+                .map((e) -> calculateContribution(e, date))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return totalIncome.add(totalCyclicalContribution).subtract(totalExpense);
     }
 
     private boolean alreadyHappened(Date transferDate, Date calculationDate) {
         return transferDate.before(calculationDate);
+    }
+
+    private BigDecimal calculateContribution(CyclicalMoneyTransfer transfer, Date calculationDate) {
+        var result = BigDecimal.ZERO;
+        var calendar = Calendar.getInstance();
+        var trackedDate = transfer.getDateOfFirstTransfer();
+
+        while (trackedDate.before(calculationDate)) {
+            result = result.add(transfer.getAmount());
+
+            calendar.setTime(trackedDate);
+            calendar.add(Calendar.DAY_OF_MONTH, transfer.getDays());
+            trackedDate = calendar.getTime();
+        }
+        return result;
     }
 }
