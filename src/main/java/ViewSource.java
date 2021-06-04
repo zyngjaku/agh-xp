@@ -1,14 +1,12 @@
 public class ViewSource {
     private final InputSource inputSource;
     private final RepositoryProvider repositoryProvider;
-    private final BalanceProvider balanceProvider;
     private final SettingsProvider settingsProvider;
     private final BalanceCalculator balanceCalculator;
 
-    public ViewSource(InputSource inputSource, RepositoryProvider repositoryProvider, BalanceProvider balanceProvider, SettingsProvider settingsProvider, BalanceCalculator balanceCalculator) {
+    public ViewSource(InputSource inputSource, RepositoryProvider repositoryProvider, SettingsProvider settingsProvider, BalanceCalculator balanceCalculator) {
         this.inputSource = inputSource;
         this.repositoryProvider = repositoryProvider;
-        this.balanceProvider = balanceProvider;
         this.settingsProvider = settingsProvider;
         this.balanceCalculator = balanceCalculator;
     }
@@ -43,10 +41,10 @@ public class ViewSource {
             return getSettingsView();
         }
         if (command.equals("addincome")) {
-            return new AddIncomeView(new AddIncomeCommand(balanceProvider, repositoryProvider.getIncomeRepository()));
+            return new AddIncomeView(new AddIncomeCommand(repositoryProvider.getIncomeRepository()));
         }
         if (command.equals("addexpense")) {
-            return new AddExpenseView(new AddExpenseCommand(balanceProvider, repositoryProvider.getExpenseRepository()));
+            return new AddExpenseView(new AddExpenseCommand(repositoryProvider.getExpenseRepository()));
         }
         if (command.equals("lastexpenses")) {
             return new LastExpensesHistoryView(new LastExpensesHistoryCommand(repositoryProvider.getExpenseRepository()));

@@ -11,7 +11,7 @@ public class Main {
                 repositories.getExpenseRepository(),
                 repositories.getIncomeRepository()
         );
-        var viewSource = new ViewSource(new StdinInputSource(), repositories, new BalanceProvider(), settingsProvider, balanceCalculator);
+        var viewSource = new ViewSource(new StdinInputSource(), repositories, settingsProvider, balanceCalculator);
 
 
         try {

@@ -5,12 +5,10 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public class AddExpenseCommand {
-    private final BalanceProvider balanceProvider;
     private final Repository<Expense> expenseRepository;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-    public AddExpenseCommand(BalanceProvider balanceProvider, Repository<Expense> expenseRepository) {
-        this.balanceProvider = balanceProvider;
+    public AddExpenseCommand(Repository<Expense> expenseRepository) {
         this.expenseRepository = expenseRepository;
     }
 
@@ -31,7 +29,6 @@ public class AddExpenseCommand {
             }
 
             var expense = new Expense(new BigDecimal(split[0]), date);
-            balanceProvider.removeFromBalance(expense.getValue());
             expenseRepository.add(expense);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
