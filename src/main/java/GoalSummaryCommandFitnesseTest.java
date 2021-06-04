@@ -13,7 +13,15 @@ public class GoalSummaryCommandFitnesseTest {
             goalRepository.add(new Goal(titles[i], BigDecimal.valueOf(value[i])));
         }
 
-        GoalSummaryCommand goalSummaryCommand = new GoalSummaryCommand(new BalanceProvider(), goalRepository);
+        GoalSummaryCommand goalSummaryCommand = new GoalSummaryCommand(createBalanceCalculator(), goalRepository);
         return goalSummaryCommand.getSummaryText().replace("\n", "");
+    }
+
+    private BalanceCalculator createBalanceCalculator() {
+        return new BalanceCalculator(
+                new Repository<>(),
+                new Repository<>(),
+                new Repository<>()
+        );
     }
 }

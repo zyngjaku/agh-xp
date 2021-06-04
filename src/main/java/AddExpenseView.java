@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class AddExpenseView implements View {
-    private AddExpenseCommand addExpenseCommand;
+    private final AddExpenseCommand addExpenseCommand;
 
     public AddExpenseView(AddExpenseCommand addExpenseCommand) {
         this.addExpenseCommand = addExpenseCommand;

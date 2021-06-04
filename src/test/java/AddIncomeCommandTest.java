@@ -17,7 +17,6 @@ public class AddIncomeCommandTest {
         var repository = new Repository<Income>();
         var sut = new AddIncomeCommand(balanceProvider, repository);
         sut.addIncome("2.22");
-        assertEquals(balanceProvider.getBalance().compareTo(new BigDecimal("2.22")), 0);
         assertEquals(repository.getAll().get(0).getValue().compareTo(new BigDecimal("2.22")), 0);
         assertEquals(repository.getAll().get(0).getDate(), Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()));
     }
@@ -28,7 +27,6 @@ public class AddIncomeCommandTest {
         var repository = new Repository<Income>();
         var sut = new AddIncomeCommand(balanceProvider, repository);
         sut.addIncome("2.22 22-02-2222");
-        assertEquals(balanceProvider.getBalance().compareTo(new BigDecimal("2.22")), 0);
         assertEquals(repository.getAll().get(0).getValue().compareTo(new BigDecimal("2.22")), 0);
         assertEquals(repository.getAll().get(0).getDate(), new SimpleDateFormat("dd-MM-yyy").parse("22-02-2222"));
     }
