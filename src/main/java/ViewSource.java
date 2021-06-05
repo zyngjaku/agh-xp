@@ -1,14 +1,14 @@
 public class ViewSource {
     private final InputSource inputSource;
     private final RepositoryProvider repositoryProvider;
-    private final BalanceProvider balanceProvider;
     private final SettingsProvider settingsProvider;
+    private final BalanceCalculator balanceCalculator;
 
-    public ViewSource(InputSource inputSource, RepositoryProvider repositoryProvider, BalanceProvider balanceProvider, SettingsProvider settingsProvider) {
+    public ViewSource(InputSource inputSource, RepositoryProvider repositoryProvider, SettingsProvider settingsProvider, BalanceCalculator balanceCalculator) {
         this.inputSource = inputSource;
         this.repositoryProvider = repositoryProvider;
-        this.balanceProvider = balanceProvider;
         this.settingsProvider = settingsProvider;
+        this.balanceCalculator = balanceCalculator;
     }
 
     public View getSettingsView() {
@@ -35,22 +35,22 @@ public class ViewSource {
             return new AddGoalView(new AddGoalCommand(repositoryProvider.getGoalRepository()));
         }
         if (command.equals("goalsummary")) {
-            return new GoalSummaryView(new GoalSummaryCommand(balanceProvider, repositoryProvider.getGoalRepository()));
+            return new GoalSummaryView(new GoalSummaryCommand(balanceCalculator, repositoryProvider.getGoalRepository()));
         }
         if (command.equals("settings")) {
             return getSettingsView();
         }
         if (command.equals("addincome")) {
-            return new AddIncomeView(new AddIncomeCommand(balanceProvider, repositoryProvider.getIncomeRepository()));
+            return new AddIncomeView(new AddIncomeCommand(repositoryProvider.getIncomeRepository()));
         }
         if (command.equals("addexpense")) {
-            return new AddExpenseView(new AddExpenseCommand(balanceProvider, repositoryProvider.getExpenseRepository()));
+            return new AddExpenseView(new AddExpenseCommand(repositoryProvider.getExpenseRepository()));
         }
         if (command.equals("lastexpenses")) {
-            return new LastExpensesHistoryView();
+            return new LastExpensesHistoryView(new LastExpensesHistoryCommand(repositoryProvider.getExpenseRepository()));
         }
         if (command.equals("checkbalance")) {
-            return new BalanceView();
+            return new BalanceView(new BalanceCommand(balanceCalculator));
         }
         if (command.equals("quit")) {
             return null;

@@ -1,12 +1,16 @@
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class CyclicalMoneyTransfer {
     private BigDecimal amount;
     private int days;
+    private Date dateOfFirstTransfer;
 
-    public CyclicalMoneyTransfer(BigDecimal amount, int days) {
+    public CyclicalMoneyTransfer(BigDecimal amount, int days, Date dateOfFirstTransfer) {
+        this.dateOfFirstTransfer = dateOfFirstTransfer;
         setAmount(amount);
         setDays(days);
+        setDateOfFirstTransfer(dateOfFirstTransfer);
     }
 
     public BigDecimal getAmount() {
@@ -38,5 +42,13 @@ public class CyclicalMoneyTransfer {
 
     public String toString() {
         return "[CYCLICAL] Amount " + this.amount + " every " + this.days + " days.";
+    }
+
+    public Date getDateOfFirstTransfer() {
+        return dateOfFirstTransfer;
+    }
+
+    public void setDateOfFirstTransfer(Date dateOfFirstTransfer) {
+        this.dateOfFirstTransfer = dateOfFirstTransfer;
     }
 }

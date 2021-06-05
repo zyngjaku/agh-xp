@@ -6,11 +6,9 @@ import java.util.Date;
 
 
 public class AddIncomeCommand {
-    private final BalanceProvider balanceProvider;
     private final Repository<Income> incomeRepository;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    public AddIncomeCommand(BalanceProvider balanceProvider, Repository<Income> incomeRepository) {
-        this.balanceProvider = balanceProvider;
+    public AddIncomeCommand(Repository<Income> incomeRepository) {
         this.incomeRepository = incomeRepository;
     }
 
@@ -30,7 +28,6 @@ public class AddIncomeCommand {
             }
 
             var income = new Income(new BigDecimal(split[0]), date);
-            balanceProvider.addToBalance(income.getValue());
             incomeRepository.add(income);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException(e.getMessage());
