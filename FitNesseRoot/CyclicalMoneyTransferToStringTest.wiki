@@ -4,5 +4,5 @@
 !path target/classes
 
 !|CyclicalMoneyTransferFitnesseTest|
-|amount | days | toString? |
-| 5000 | 40 | [CYCLICAL] Amount 5000 every 40 days. |
+|amount | days |dateOfFirstTransfer| toString? |getDateOfFirstTransfer?|
+| 5000 | 40 |2021-06-06| [CYCLICAL] Amount 5000 every 40 days. |06-Jun-2021|
