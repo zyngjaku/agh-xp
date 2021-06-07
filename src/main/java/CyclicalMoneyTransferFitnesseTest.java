@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class CyclicalMoneyTransferFitnesseTest {
@@ -14,7 +15,7 @@ public class CyclicalMoneyTransferFitnesseTest {
         this.days = days;
     }
 
-    public void setDateOfFirstTransfer(Date date) { this.dateOfFirstTransfer = date; }
+    public void setDateOfFirstTransfer(String date) { this.dateOfFirstTransfer = java.sql.Date.valueOf(LocalDate.parse(date)); }
 
     public BigDecimal getAmountTest() {
         CyclicalMoneyTransfer cyclicalMoneyTransfer = new CyclicalMoneyTransfer(this.amount, this.days, dateOfFirstTransfer);
