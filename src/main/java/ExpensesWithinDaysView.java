@@ -15,7 +15,7 @@ public class ExpensesWithinDaysView implements View {
         var scanner = new Scanner(System.in);
         try {
             var days = scanner.nextLine();
-            System.out.println("Expanses within " + days + " days");
+            System.out.println("Expenses within " + days + " days");
             System.out.println(expensesWithinDaysCommand.getExpensesHistory(days));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

@@ -49,9 +49,9 @@ public class ExpensesInMonthCommand {
             }
 
             if (builder.length() != 0) {
-                builder.append("Sum of expanses: ").append(sum.intValue()).append(" ").append(currency).append("\n");
+                builder.append("Sum of expenses: ").append(sum.intValue()).append(" ").append(currency).append("\n");
             } else {
-                builder.append("No expanses in this month\n");
+                builder.append("No expenses in this month\n");
             }
 
             return builder.toString();

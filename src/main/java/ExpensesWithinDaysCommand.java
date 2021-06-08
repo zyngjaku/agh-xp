@@ -47,9 +47,9 @@ public class ExpensesWithinDaysCommand {
             }
 
             if (builder.length() != 0) {
-                builder.append("Sum of expanses: ").append(sum.intValue()).append(" ").append(currency).append("\n");
+                builder.append("Sum of expenses: ").append(sum.intValue()).append(" ").append(currency).append("\n");
             } else {
-                builder.append("No expanses\n");
+                builder.append("No expenses\n");
             }
 
             return builder.toString();
