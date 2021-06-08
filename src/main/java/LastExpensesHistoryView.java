@@ -12,10 +12,10 @@ public class LastExpensesHistoryView implements View {
     public void execute() {
         System.out.println("Amount of expenses >");
         var scanner = new Scanner(System.in);
-
+        var currency = System.getProperties().getProperty("currency", new SettingsProvider().getCurrency());
         try {
             for(Expense ex : Objects.requireNonNull(command.getLastExpenses(scanner.nextLine()))) {
-                System.out.println("Amount: " + ex.getValue() + " Date:" + ex.getDate());
+                System.out.println("Amount: " + ex.getValue() + " " + currency + " Date:" + ex.getDate());
             }
         } catch (Exception e) {
             System.out.println("No expenses history");

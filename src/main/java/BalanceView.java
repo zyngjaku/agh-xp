@@ -10,7 +10,8 @@ public class BalanceView implements View {
     public void execute() {
         try {
             var balance = command.getTodayBalance();
-            System.out.println("Balance: " + balance);
+            var currency = System.getProperties().getProperty("currency", new SettingsProvider().getCurrency());
+            System.out.println("Balance: " + balance + " " + currency);
         } catch (Exception e) {
             System.out.println(e);
         }

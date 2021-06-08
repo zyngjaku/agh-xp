@@ -10,8 +10,8 @@ class ExpensesInMonthCommandTest {
         var summary = new ExpensesInMonthCommand(repository);
         sut.addExpense("40 03-06-2020");
         sut.addExpense("25 07-05-2020");
-        var expected = "Day: 3, value: 40\n" +
-                "Sum of expanses: 40\n";
+        var expected = "Day: 3, value: 40 USD\n" +
+                "Sum of expanses: 40 USD\n";
         assertEquals(expected, summary.getExpensesHistory("06-2020"));
     }
 

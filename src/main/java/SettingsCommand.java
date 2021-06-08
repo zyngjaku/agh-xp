@@ -6,6 +6,8 @@ public class SettingsCommand {
     }
 
     public void handleInput(String nextLine) {
+        clearSettings();
+
         if (nextLine == null || nextLine.isEmpty()) {
             return;
         }
@@ -30,5 +32,10 @@ public class SettingsCommand {
                 System.out.println("Failed to load or save settings: " + exc.getMessage());
             }
         }
+    }
+
+    private void clearSettings() {
+        System.clearProperty("currency");
+        System.clearProperty("language");
     }
 }
