@@ -28,7 +28,10 @@ GoalTotalAmountTest
 
 GoalSummaryCommand
 
+BalanceCalculatorFitnesseTest
+
+GolaSummaryCommand
+
 AddIncomeCommand
 
 AddExpenseCommand
-
