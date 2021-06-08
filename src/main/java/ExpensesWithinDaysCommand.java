@@ -41,13 +41,14 @@ public class ExpensesWithinDaysCommand {
                 if (diffDates(expenseDate, now) <= days) {
                     BigDecimal expenseValue = expense.getValue();
                     sum = sum.add(expenseValue);
-                    builder.append(String.format("Date: %s, value: %d %s", formatter.format(expenseDate), expenseValue.intValue(), currency));
+                    builder.append(String.format("Date: %s, value: %.2f %s, category: %s", formatter.format(expenseDate),
+                            expenseValue.floatValue(), currency, expense.getCategory()));
                     builder.append('\n');
                 }
             }
 
             if (builder.length() != 0) {
-                builder.append("Sum of expenses: ").append(sum.intValue()).append(" ").append(currency).append("\n");
+                builder.append("Sum of expenses: ").append(sum.floatValue()).append(" ").append(currency).append("\n");
             } else {
                 builder.append("No expenses\n");
             }

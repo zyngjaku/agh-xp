@@ -9,10 +9,10 @@ class ExpensesWithinDaysCommandTest {
         var repository = new Repository<Expense>();
         var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesWithinDaysCommand(repository);
-        sut.addExpense("10 02-06-2021");
+        sut.addExpense("10 bike 02-06-2021");
         sut.addExpense("60 01-06-1952");
-        var expected = "Date: 02-06-2021, value: 10 USD\n" +
-                "Sum of expanses: 10 USD\n";
+        var expected = "Date: 02-06-2021, value: 10,00 USD, category: bike\n" +
+                "Sum of expenses: 10.0 USD\n";
         assertEquals(expected, summary.getExpensesHistory("50"));
     }
 
@@ -22,7 +22,7 @@ class ExpensesWithinDaysCommandTest {
         var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesWithinDaysCommand(repository);
         sut.addExpense("60 01-06-1952");
-        var expected = "No expanses\n";
+        var expected = "No expenses\n";
         assertEquals(expected, summary.getExpensesHistory("50"));
     }
 

@@ -43,13 +43,14 @@ public class ExpensesInMonthCommand {
                 if (calendar.get(Calendar.MONTH) + 1 == month && calendar.get(Calendar.YEAR) == year) {
                     BigDecimal expenseValue = expense.getValue();
                     sum = sum.add(expenseValue);
-                    builder.append(String.format("Day: %d, value: %d %s", calendar.get(Calendar.DAY_OF_MONTH), expenseValue.intValue(), currency));
+                    builder.append(String.format("Day: %d, value: %.2f %s, category: %s", calendar.get(Calendar.DAY_OF_MONTH),
+                            expenseValue.floatValue(), currency, expense.getCategory()));
                     builder.append('\n');
                 }
             }
 
             if (builder.length() != 0) {
-                builder.append("Sum of expenses: ").append(sum.intValue()).append(" ").append(currency).append("\n");
+                builder.append("Sum of expenses: ").append(sum.floatValue()).append(" ").append(currency).append("\n");
             } else {
                 builder.append("No expenses in this month\n");
             }

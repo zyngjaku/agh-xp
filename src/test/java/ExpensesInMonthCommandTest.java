@@ -9,9 +9,9 @@ class ExpensesInMonthCommandTest {
         var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesInMonthCommand(repository);
         sut.addExpense("40 03-06-2020");
-        sut.addExpense("25 07-05-2020");
-        var expected = "Day: 3, value: 40 USD\n" +
-                "Sum of expanses: 40 USD\n";
+        sut.addExpense("25 house 07-05-2020");
+        var expected = "Day: 3, value: 40,00 USD, category: No category\n" +
+                "Sum of expenses: 40.0 USD\n";
         assertEquals(expected, summary.getExpensesHistory("06-2020"));
     }
 
@@ -22,7 +22,7 @@ class ExpensesInMonthCommandTest {
         var summary = new ExpensesInMonthCommand(repository);
         sut.addExpense("60 01-06-1952");
         sut.addExpense("60 01-07-1951");
-        var expected = "No expanses in this month\n";
+        var expected = "No expenses in this month\n";
         assertEquals(expected, summary.getExpensesHistory("06-1951"));
     }
 
