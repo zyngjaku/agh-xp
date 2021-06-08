@@ -58,6 +58,9 @@ public class ViewSource {
         if (command.equals("checkbalance")) {
             return new BalanceView(new BalanceCommand(balanceCalculator));
         }
+        if (command.equals("expensespercategory")) {
+            return new ExpensesPerCategoryView(new ExpensesPerCategoryCommand(repositoryProvider.getExpenseRepository(), settingsProvider));
+        }
         if (command.equals("quit")) {
             return null;
         }
