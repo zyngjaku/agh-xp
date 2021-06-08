@@ -25,3 +25,5 @@ GoalTotalAmountTest
 CyclicalMoneyTransferToStringTest
 
 GoalTotalAmountTest
+
+AddIncomeCommand
