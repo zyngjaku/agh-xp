@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExpensesInMonthCommandTest {
     @Test
     public void whenExpensesInMonthRange_thenReturnExpenses() {
-        var balanceProvider = new BalanceProvider();
         var repository = new Repository<Expense>();
-        var sut = new AddExpenseCommand(balanceProvider, repository);
+        var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesInMonthCommand(repository);
         sut.addExpense("40 03-06-2020");
         sut.addExpense("25 07-05-2020");
@@ -18,9 +17,8 @@ class ExpensesInMonthCommandTest {
 
     @Test
     public void whenExpensesOutOfRangeMonth_thenReturnNoExpenses() {
-        var balanceProvider = new BalanceProvider();
         var repository = new Repository<Expense>();
-        var sut = new AddExpenseCommand(balanceProvider, repository);
+        var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesInMonthCommand(repository);
         sut.addExpense("60 01-06-1952");
         sut.addExpense("60 01-07-1951");
