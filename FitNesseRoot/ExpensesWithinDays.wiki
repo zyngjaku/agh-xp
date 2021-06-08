@@ -1,0 +1,8 @@
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+!path C:\Users\ASUS\Desktop\___\AGH\XP\agh-xp\target\classes
+
+!|ExpensesWithinDaysCommandFitnesseTest|
+|values|dates|days|getExpensesHistory?|
+|200|03-02-2001|30|No expanses|
+|100|01-04-2021|90|Date: 01-04-2021, value: 100Sum of expanses: 100|

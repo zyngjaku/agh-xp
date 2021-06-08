@@ -46,6 +46,12 @@ public class ViewSource {
         if (command.equals("addexpense")) {
             return new AddExpenseView(new AddExpenseCommand(repositoryProvider.getExpenseRepository()));
         }
+        if (command.equals("expensesinmonth")) {
+            return new ExpensesInMonthView(new ExpensesInMonthCommand(repositoryProvider.getExpenseRepository()));
+        }
+        if (command.equals("expenseswithindays")) {
+            return new ExpensesWithinDaysView(new ExpensesWithinDaysCommand(repositoryProvider.getExpenseRepository()));
+        }
         if (command.equals("lastexpenses")) {
             return new LastExpensesHistoryView(new LastExpensesHistoryCommand(repositoryProvider.getExpenseRepository()));
         }
