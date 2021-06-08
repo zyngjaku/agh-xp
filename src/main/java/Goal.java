@@ -10,12 +10,15 @@ public class Goal {
         } else {
             this.title = title;
         }
-
+        if (total.scale() != 0 && total.scale() != 2) {
+            throw new IllegalArgumentException("Invalid number of decimal places. Expected amount format: 123 OR 123.00");
+        }
         if (total.compareTo(BigDecimal.ZERO) > 0) {
             this.total = total;
         } else {
             throw new IllegalArgumentException("Negative or zero goal amount");
         }
+
     }
 
     public String getTitle() {
