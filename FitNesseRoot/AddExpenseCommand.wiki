@@ -1,0 +1,11 @@
+---
+Test
+---
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+!path target/classes
+!| AddExpenseCommandFitnesseTest |
+| input | getValue? | getDate? |
+| 200 03-02-2001 | 200 | 03-02-2001 |
+| 100 01-04-2021 | 100 | 01-04-2021 |
+| 1 not-a-date | EXCEPTION:=~/Could not parse input/ | EXCEPTION:=~/Could not parse input/ |

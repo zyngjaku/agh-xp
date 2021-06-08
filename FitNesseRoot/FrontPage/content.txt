@@ -27,3 +27,5 @@ CyclicalMoneyTransferToStringTest
 GoalTotalAmountTest
 
 AddIncomeCommand
+
+AddExpenseCommand
