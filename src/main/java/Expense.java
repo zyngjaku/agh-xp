@@ -4,6 +4,11 @@ import java.util.Date;
 public class Expense {
     private final BigDecimal value;
     private final Date date;
+    private final String category;
+
+    public String getCategory() {
+        return category;
+    }
 
     public BigDecimal getValue() {
         return value;
@@ -13,11 +18,20 @@ public class Expense {
         return date;
     }
 
-    public Expense(BigDecimal value, Date date) {
+    public Expense(BigDecimal value, Date date, String category) {
         if (value.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Value cannot be less than zero");
         }
         this.value = value;
         this.date = date;
+        if (!category.isBlank()) {
+            this.category = category;
+        } else {
+            this.category = "No category";
+        }
+    }
+
+    public Expense(BigDecimal value, Date date) {
+        this(value, date, "");
     }
 }

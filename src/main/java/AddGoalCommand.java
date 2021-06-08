@@ -10,13 +10,15 @@ public class AddGoalCommand {
     }
 
     public void addGoal(String input) {
-        var words = input.split(" ");
-        if (words.length < 2) {
+        var cleanInput = input.strip();
+        var spacePosition = cleanInput.lastIndexOf(' ');
+        if (spacePosition == -1) {
             throw new IllegalArgumentException("Two parameters required");
         }
+
+        var title = cleanInput.substring(0, spacePosition);
         try {
-            var title = words[0];
-            var total = new BigDecimal(words[1]);
+            var total = new BigDecimal(cleanInput.substring(spacePosition + 1));
             goalRepository.add(new Goal(title, total));
         } catch (Exception e) {
             throw new IllegalArgumentException("Invalid input format: " + e.getMessage());
