@@ -37,5 +37,6 @@ public class SettingsCommand {
     private void clearSettings() {
         System.clearProperty("currency");
         System.clearProperty("language");
+        System.clearProperty("startingBalance");
     }
 }

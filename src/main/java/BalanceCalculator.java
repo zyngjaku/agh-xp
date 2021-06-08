@@ -19,6 +19,8 @@ public class BalanceCalculator {
                 .filter((e) -> alreadyHappened(e.getDate(), date))
                 .map(Income::getValue)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal startingBalance = new BigDecimal(System.getProperties().getProperty("startingBalance", new SettingsProvider().getStartingBalance()));
+        totalIncome = totalIncome.add(startingBalance);
 
         var expenses = expenseRepository.getAll();
         var totalExpense = expenses.stream()

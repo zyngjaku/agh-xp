@@ -1,4 +1,5 @@
 {
     "currency": "PLN",
-    "language": "PL"
+    "language": "PL",
+    "startingBalance": "0"
 }
