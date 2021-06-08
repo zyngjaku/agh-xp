@@ -10,35 +10,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class LastExpensesHistoryCommandTest {
 
-    List<Expense> expensesList = new ArrayList<>();
-
-    private void addExpenses() throws ParseException {
-        expensesList.add(new Expense(new BigDecimal("240"), new SimpleDateFormat("dd-MM-yyy").parse("22-02-2021")));
-        expensesList.add(new Expense(new BigDecimal("450"), new SimpleDateFormat("dd-MM-yyy").parse("11-05-2021")));
-        expensesList.add(new Expense(new BigDecimal("666"), new SimpleDateFormat("dd-MM-yyy").parse("12-05-2021")));
-        expensesList.add(new Expense(new BigDecimal("730"), new SimpleDateFormat("dd-MM-yyy").parse("13-02-2021")));
-        expensesList.add(new Expense(new BigDecimal("340"), new SimpleDateFormat("dd-MM-yyy").parse("14-04-2021")));
+    private Repository<Expense> createExpensesRepository() throws ParseException {
+        var expenses = new Repository<Expense>();
+        var format = new SimpleDateFormat("dd-MM-yyy");
+        expenses.add(new Expense(new BigDecimal("240"), format.parse("22-02-2021")));
+        expenses.add(new Expense(new BigDecimal("450"), format.parse("11-05-2021")));
+        expenses.add(new Expense(new BigDecimal("666"), format.parse("12-05-2021")));
+        expenses.add(new Expense(new BigDecimal("730"), format.parse("13-02-2021")));
+        expenses.add(new Expense(new BigDecimal("340"), format.parse("14-04-2021")));
+        return expenses;
     }
 
     @Test
     public void whenExpensesArePresent_thenReturnListOfExpenses() throws ParseException {
-        addExpenses();
-        var expenses = LastExpensesHistoryCommand.getLastExpenses("3", expensesList);
+        var command = new LastExpensesHistoryCommand(createExpensesRepository());
+        var expenses = command.getLastExpenses("3");
         assert expenses != null;
         assertEquals(expenses.size(), 3);
     }
 
     @Test
-    public void whenTheNumberOfExpensesIsLessThanPassedArgument_thenThrowException() throws ParseException {
-        addExpenses();
-        var expenses = LastExpensesHistoryCommand.getLastExpenses("6", expensesList);
-        assertThrows(NullPointerException.class, () -> expenses.size());
+    public void whenTheNumberOfExpensesIsLessThanPassedArgument_thenReturnAllExpenses() throws ParseException {
+        var command = new LastExpensesHistoryCommand(createExpensesRepository());
+        var expenses = command.getLastExpenses("6");
+        assert expenses != null;
+        assertEquals(expenses.size(), 5);
     }
 
     @Test
     public void whenTheArgumentIsIncorrect_thenThrowException() throws ParseException {
-        addExpenses();
-        var expenses = LastExpensesHistoryCommand.getLastExpenses("lolo", expensesList);
+        var command = new LastExpensesHistoryCommand(createExpensesRepository());
+        var expenses = command.getLastExpenses("lolo");
         assertThrows(NullPointerException.class, () -> expenses.size());
     }
 }

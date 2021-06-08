@@ -6,21 +6,22 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class GoalSummaryCommandTest {
     @Mock
-    BalanceProvider balanceProvider;
+    BalanceCalculator balanceCalculator;
 
     @Test
     public void whenAddingValidGoalName_isAccepted() {
         var balance = new BigDecimal("500");
-        when(balanceProvider.getBalance()).thenReturn(balance);
+        when(balanceCalculator.getBalance(any())).thenReturn(balance);
         var repository = new Repository<Goal>();
         repository.add(new Goal("goal1", new BigDecimal(2000)));
         repository.add(new Goal("goal2", new BigDecimal(200)));
-        var sut = new GoalSummaryCommand(balanceProvider, repository);
+        var sut = new GoalSummaryCommand(balanceCalculator, repository);
         var result = sut.getSummaryText();
         var expected = new GoalSummary(repository.getAll().get(0), balance).getSummary()
                 + "\n" + new GoalSummary(repository.getAll().get(1), balance).getSummary() + "\n";

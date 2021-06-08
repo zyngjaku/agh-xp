@@ -6,11 +6,17 @@ public class Main {
         repositories.setIncomeRepository(new Repository<>());
         repositories.setExpenseRepository(new Repository<>());
         var settingsProvider = new SettingsProvider();
-        var viewSource = new ViewSource(new StdinInputSource(), repositories, new BalanceProvider(), settingsProvider);
+        var balanceCalculator = new BalanceCalculator(
+                repositories.getCyclicalItemRepository(),
+                repositories.getExpenseRepository(),
+                repositories.getIncomeRepository()
+        );
+        var viewSource = new ViewSource(new StdinInputSource(), repositories, settingsProvider, balanceCalculator);
 
 
         try {
             viewSource.getSettingsView().execute();
+            new HelpView().execute();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

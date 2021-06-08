@@ -11,7 +11,7 @@ public class ExpensesWithinDaysCommandFitnesseTest {
 
     public String getExpensesHistory() {
         RepositoryProvider repository  = new RepositoryProvider();
-        AddExpenseCommand cmd = new AddExpenseCommand(new BalanceProvider(), repository.getExpenseRepository());
+        AddExpenseCommand cmd = new AddExpenseCommand(repository.getExpenseRepository());
         for (int i=0; i<dates.length; i++) {
             cmd.addExpense(String.format("%d %s", values[i], dates[i]));
         }

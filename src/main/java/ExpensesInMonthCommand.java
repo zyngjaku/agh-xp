@@ -36,19 +36,20 @@ public class ExpensesInMonthCommand {
             Calendar calendar = Calendar.getInstance();
             BigDecimal sum = BigDecimal.ZERO;
 
+            var currency = System.getProperties().getProperty("currency", new SettingsProvider().getCurrency());
             for (Expense expense : expenseRepository.getAll()) {
                 Date date = expense.getDate();
                 calendar.setTime(date);
                 if (calendar.get(Calendar.MONTH) + 1 == month && calendar.get(Calendar.YEAR) == year) {
                     BigDecimal expenseValue = expense.getValue();
                     sum = sum.add(expenseValue);
-                    builder.append(String.format("Day: %d, value: %d", calendar.get(Calendar.DAY_OF_MONTH), expenseValue.intValue()));
+                    builder.append(String.format("Day: %d, value: %d %s", calendar.get(Calendar.DAY_OF_MONTH), expenseValue.intValue(), currency));
                     builder.append('\n');
                 }
             }
 
             if (builder.length() != 0) {
-                builder.append("Sum of expanses: ").append(sum.intValue()).append("\n");
+                builder.append("Sum of expanses: ").append(sum.intValue()).append(" ").append(currency).append("\n");
             } else {
                 builder.append("No expanses in this month\n");
             }

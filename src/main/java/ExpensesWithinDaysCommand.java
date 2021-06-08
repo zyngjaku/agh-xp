@@ -34,19 +34,20 @@ public class ExpensesWithinDaysCommand {
                 throw new IllegalArgumentException("The number of days must be greater than 0");
             }
 
+            var currency = System.getProperties().getProperty("currency", new SettingsProvider().getCurrency());
             for (Expense expense : expenseRepository.getAll()) {
                 Date expenseDate = expense.getDate();
 
                 if (diffDates(expenseDate, now) <= days) {
                     BigDecimal expenseValue = expense.getValue();
                     sum = sum.add(expenseValue);
-                    builder.append(String.format("Date: %s, value: %d", formatter.format(expenseDate), expenseValue.intValue()));
+                    builder.append(String.format("Date: %s, value: %d %s", formatter.format(expenseDate), expenseValue.intValue(), currency));
                     builder.append('\n');
                 }
             }
 
             if (builder.length() != 0) {
-                builder.append("Sum of expanses: ").append(sum.intValue()).append("\n");
+                builder.append("Sum of expanses: ").append(sum.intValue()).append(" ").append(currency).append("\n");
             } else {
                 builder.append("No expanses\n");
             }

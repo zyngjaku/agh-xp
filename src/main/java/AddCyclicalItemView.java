@@ -10,7 +10,7 @@ public class AddCyclicalItemView implements View {
 
     @Override
     public void execute() {
-        System.out.println("Input format: > amount days");
+        System.out.println("Input format: > amount days [dd-MM-yyyy date]");
         System.out.print("Add cyclical > ");
         var scanner = new Scanner(System.in);
         try {

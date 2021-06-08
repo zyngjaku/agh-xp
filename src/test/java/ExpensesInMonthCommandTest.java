@@ -5,22 +5,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExpensesInMonthCommandTest {
     @Test
     public void whenExpensesInMonthRange_thenReturnExpenses() {
-        var balanceProvider = new BalanceProvider();
         var repository = new Repository<Expense>();
-        var sut = new AddExpenseCommand(balanceProvider, repository);
+        var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesInMonthCommand(repository);
         sut.addExpense("40 03-06-2020");
         sut.addExpense("25 07-05-2020");
-        var expected = "Day: 3, value: 40\n" +
-                "Sum of expanses: 40\n";
+        var expected = "Day: 3, value: 40 USD\n" +
+                "Sum of expanses: 40 USD\n";
         assertEquals(expected, summary.getExpensesHistory("06-2020"));
     }
 
     @Test
     public void whenExpensesOutOfRangeMonth_thenReturnNoExpenses() {
-        var balanceProvider = new BalanceProvider();
         var repository = new Repository<Expense>();
-        var sut = new AddExpenseCommand(balanceProvider, repository);
+        var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesInMonthCommand(repository);
         sut.addExpense("60 01-06-1952");
         sut.addExpense("60 01-07-1951");

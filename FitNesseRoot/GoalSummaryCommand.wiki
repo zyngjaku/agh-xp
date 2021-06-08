@@ -1,0 +1,11 @@
+---
+Test
+---
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+!path target\classes
+
+!|GoalSummaryCommandFitnesseTest| 
+|titles|value|getSummaryText?|
+|auto, komputer|5000, 300|auto: 5000,00/5000,00 PLN remainingkomputer: 300,00/300,00 PLN remaining|
+|miłość|298|miłość: 298,00/298,00 PLN remaining|

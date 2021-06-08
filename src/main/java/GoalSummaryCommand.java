@@ -1,17 +1,20 @@
+import java.util.Date;
+
 public class GoalSummaryCommand {
-    private final BalanceProvider balanceProvider;
+    private final BalanceCalculator balanceCalculator;
     private final Repository<Goal> goalRepository;
 
-    public GoalSummaryCommand(BalanceProvider balanceProvider, Repository<Goal> goalRepository) {
-        this.balanceProvider = balanceProvider;
+    public GoalSummaryCommand(BalanceCalculator balanceCalculator, Repository<Goal> goalRepository) {
+        this.balanceCalculator = balanceCalculator;
         this.goalRepository = goalRepository;
     }
 
     public String getSummaryText() {
         try {
             var builder = new StringBuilder();
+            var todayDate = new Date();
             for (var goal : goalRepository.getAll()) {
-                builder.append(new GoalSummary(goal, balanceProvider.getBalance()).getSummary());
+                builder.append(new GoalSummary(goal, balanceCalculator.getBalance(todayDate)).getSummary());
                 builder.append('\n');
             }
             return builder.toString();
