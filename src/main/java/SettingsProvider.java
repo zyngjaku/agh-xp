@@ -22,6 +22,8 @@ public class SettingsProvider {
         var newSettings = serializer.loadFromFile();
         setCurrency(newSettings.getCurrency());
         setLanguage(newSettings.getLanguage());
+        System.setProperty("currency", currency);
+        System.setProperty("language", language);
     }
 
     public void serialize(Serializer serializer) throws SerializationException {

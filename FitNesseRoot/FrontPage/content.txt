@@ -27,3 +27,7 @@ CyclicalMoneyTransferToStringTest
 GoalTotalAmountTest
 
 GolaSummaryCommand
+
+AddIncomeCommand
+
+AddExpenseCommand
