@@ -5,7 +5,7 @@ Test
 !define TEST_SYSTEM {slim}
 !path target/classes
 !| AddExpenseCommandFitnesseTest |
-| input | getValue? | getDate? |
-| 200 03-02-2001 | 200 | 03-02-2001 |
-| 100 01-04-2021 | 100 | 01-04-2021 |
-| 1 not-a-date | EXCEPTION:=~/Could not parse input/ | EXCEPTION:=~/Could not parse input/ |
+| input | getValue? | getCategory? | getDate? |
+| 200 03-02-2001 | 200 | No category | 03-02-2001 |
+| 100 some category 01-04-2021 | 100 | some category | 01-04-2021 |
+| 22 some-category 03-02-2001| 22 | some-category | 03-02-2001 |

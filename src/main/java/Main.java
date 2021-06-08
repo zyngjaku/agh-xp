@@ -16,6 +16,7 @@ public class Main {
 
         try {
             viewSource.getSettingsView().execute();
+            new HelpView().execute();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

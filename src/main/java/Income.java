@@ -18,6 +18,9 @@ public class Income {
         if (value.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Value cannot be less than zero");
         }
+        if (value.scale() != 0 && value.scale() != 2) {
+            throw new IllegalArgumentException("Invalid number of decimal places. Expected amount format: 123 OR 123.00");
+        }
         this.value = value;
         this.date = date;
     }

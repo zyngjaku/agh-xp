@@ -37,5 +37,6 @@ public class AddIncomeCommandTest {
         assertThrows(IllegalArgumentException.class, () -> sut.addIncome("sdff"));
         assertThrows(IllegalArgumentException.class, () -> sut.addIncome(""));
         assertThrows(IllegalArgumentException.class, () -> sut.addIncome("120.2 date"));
+        assertThrows(IllegalArgumentException.class, () -> sut.addIncome("120.2"));
     }
 }

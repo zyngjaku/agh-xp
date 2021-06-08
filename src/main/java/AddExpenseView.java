@@ -9,7 +9,7 @@ public class AddExpenseView implements View {
 
     @Override
     public void execute() {
-        System.out.println("Input format: value [dd-MM-yyyy date]");
+        System.out.println("Input format: value [category] [dd-MM-yyyy date]");
         System.out.print("Add expense > ");
         var scanner = new Scanner(System.in);
         try {

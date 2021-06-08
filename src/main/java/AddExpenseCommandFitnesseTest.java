@@ -22,4 +22,11 @@ public class AddExpenseCommandFitnesseTest {
         sut.addExpense(input);
         return dateFormat.format(repository.getAll().get(0).getDate());
     }
+
+    public String getCategory() {
+        var repository = new Repository<Expense>();
+        var sut = new AddExpenseCommand(repository);
+        sut.addExpense(input);
+        return repository.getAll().get(0).getCategory();
+    }
 }

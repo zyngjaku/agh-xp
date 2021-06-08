@@ -10,11 +10,11 @@ class AddGoalCommandTest {
     @CsvSource(value = {"Car", "Big house", "dddd", "A fairly complex name."})
     public void whenAddingValidGoalName_isAccepted(String name) {
         var sut = new AddGoalCommand(new Repository<>());
-        sut.addGoal(name + " 5.6");
+        sut.addGoal(name + " 5.60");
     }
 
     @ParameterizedTest(name = "Amount: {0}")
-    @CsvSource(value = {"5.2", "2000"})
+    @CsvSource(value = {"5.20", "2000"})
     public void whenAddingValidGoalAmount_isAccepted(String amount) {
         var sut = new AddGoalCommand(new Repository<>());
         sut.addGoal("House " + amount);
@@ -22,8 +22,17 @@ class AddGoalCommandTest {
 
 
     @ParameterizedTest(name = "Amount: {0}")
-    @CsvSource(value = {"0.0", "-10.99"})
+    @CsvSource(value = {"0.00", "-10.99"})
     public void whenGoalTotalIsNotPositive_isRejected(String amount) {
+        var sut = new AddGoalCommand(new Repository<>());
+        assertThrows(IllegalArgumentException.class, () -> {
+            sut.addGoal("car " + amount);
+        });
+    }
+
+    @ParameterizedTest(name = "Amount: {0}")
+    @CsvSource(value = {"0.00", "10.999"})
+    public void whenNumberOfDecimalPlacesIsIncorrect_isRejected(String amount) {
         var sut = new AddGoalCommand(new Repository<>());
         assertThrows(IllegalArgumentException.class, () -> {
             sut.addGoal("car " + amount);
