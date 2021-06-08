@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AddGoalCommandTest {
     @ParameterizedTest(name = "Name: {0}")
-    @CsvSource(value = {"Car", "Big-house", "dddd"})
+    @CsvSource(value = {"Car", "Big house", "dddd", "A fairly complex name."})
     public void whenAddingValidGoalName_isAccepted(String name) {
         var sut = new AddGoalCommand(new Repository<>());
         sut.addGoal(name + " 5.6");
@@ -44,5 +44,13 @@ class AddGoalCommandTest {
         var sut = new AddGoalCommand(repository);
         sut.addGoal("goal 12");
         assertEquals(1, repository.getAll().size());
+    }
+
+    @Test
+    public void whenAddingInputWithTrailingAndLeadingSpaces_spacesAreRemoved() {
+        var repository = new Repository<Goal>();
+        var sut = new AddGoalCommand(repository);
+        sut.addGoal("        Expensive TV 6999.99  ");
+        assertEquals("Expensive TV", repository.getAll().get(0).getTitle());
     }
 }
