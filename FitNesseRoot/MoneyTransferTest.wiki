@@ -6,5 +6,5 @@
 | 5000 | 40 | 5000 | 40 |
 | 3145 | 50 | 3145 | 50 |
 | 1000000000 | 909090909 | 1000000000 | 909090909 |
-| 0 | 10 | EXCEPTION:=~/Money amount cannot be zero./ | 10 |
-| 123000 | -5 | 123000 | EXCEPTION:=~/Number of days must be greater than zero./ |
+| 0 | 10 | EXCEPTION:=~/Money amount cannot be zero./ | EXCEPTION:=~/Money amount cannot be zero./ |
+| 123000 | -5 | EXCEPTION:=~/Number of days must be greater than zero./ | EXCEPTION:=~/Number of days must be greater than zero./ |
