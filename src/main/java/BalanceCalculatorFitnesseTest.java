@@ -82,9 +82,9 @@ public class BalanceCalculatorFitnesseTest
     }
 
     public String getBalance() {
-        Repository<CyclicalMoneyTransfer> cyclicalMoneyTransferRepository = new Repository<>();
-        Repository<Expense> expenseRepository = new Repository<>();
-        Repository<Income> incomeRepository = new Repository<>();
+        Repository<CyclicalMoneyTransfer> cyclicalMoneyTransferRepository = new ListRepository<>();
+        Repository<Expense> expenseRepository = new ListRepository<>();
+        Repository<Income> incomeRepository = new ListRepository<>();
 
         if (days != 0) {
             cyclicalMoneyTransferRepository.add(new CyclicalMoneyTransfer(this.amount, this.days, dateOfFirstTransfer));

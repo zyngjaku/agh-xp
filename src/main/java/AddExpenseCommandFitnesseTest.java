@@ -10,21 +10,21 @@ public class AddExpenseCommandFitnesseTest {
     }
 
     public BigDecimal getValue() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var sut = new AddExpenseCommand(repository);
         sut.addExpense(input);
         return repository.getAll().get(0).getValue();
     }
 
     public String getDate() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var sut = new AddExpenseCommand(repository);
         sut.addExpense(input);
         return dateFormat.format(repository.getAll().get(0).getDate());
     }
 
     public String getCategory() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var sut = new AddExpenseCommand(repository);
         sut.addExpense(input);
         return repository.getAll().get(0).getCategory();

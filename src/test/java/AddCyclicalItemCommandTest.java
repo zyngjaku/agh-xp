@@ -9,14 +9,14 @@ class AddCyclicalItemCommandTest {
     @ParameterizedTest(name = "Amount: {0}")
     @CsvSource(value = {"100", "200", "4000"})
     public void whenAddingValidExpense_isAccepted(String givenAmount) {
-        var sut = new AddCyclicalItemCommand(new Repository<>());
+        var sut = new AddCyclicalItemCommand(new ListRepository<>());
         sut.addCyclicalItem(givenAmount + " 4");
     }
 
     @ParameterizedTest(name = "Amount: {0}")
     @CsvSource(value = {"0.0"})
     public void whenAmountIsZero_isRejected(String givenAmount) {
-        var sut = new AddCyclicalItemCommand(new Repository<>());
+        var sut = new AddCyclicalItemCommand(new ListRepository<>());
         assertThrows(IllegalArgumentException.class, () -> {
             sut.addCyclicalItem(givenAmount + " 30");
         });
@@ -25,14 +25,14 @@ class AddCyclicalItemCommandTest {
     @ParameterizedTest(name = "Days: {0}")
     @CsvSource(value = {"1", "10", "30"})
     public void whenAddingValidNumberOfDays_isAccepted(String givenDays) {
-        var sut = new AddCyclicalItemCommand(new Repository<>());
+        var sut = new AddCyclicalItemCommand(new ListRepository<>());
         sut.addCyclicalItem("10 " + givenDays);
     }
 
     @ParameterizedTest(name = "Days: {0}")
     @CsvSource(value = {"0", "-10", "-30"})
     public void whenNumberOfDaysIsZeroOrLess_isRejected(String givenDays) {
-        var sut = new AddCyclicalItemCommand(new Repository<>());
+        var sut = new AddCyclicalItemCommand(new ListRepository<>());
         assertThrows(IllegalArgumentException.class, () -> {
             sut.addCyclicalItem("10 " + givenDays);
         });
@@ -41,14 +41,14 @@ class AddCyclicalItemCommandTest {
     @ParameterizedTest(name = "Amount: {0}")
     @CsvSource(value = {"5.00", "123.99", "30000.05"})
     public void whenAddingAmountWithTwoDecimalPlaces_isAccepted(String givenAmount) {
-        var sut = new AddCyclicalItemCommand(new Repository<>());
+        var sut = new AddCyclicalItemCommand(new ListRepository<>());
         sut.addCyclicalItem(givenAmount + " 30");
     }
 
     @ParameterizedTest(name = "Amount: {0}")
     @CsvSource(value = {"5.3", "123.1", "30.123", "99.9999"})
     public void whenAddingAmountWithOneOrMoreThanTwoDecimalPlaces_isRejected(String givenAmount) {
-        var sut = new AddCyclicalItemCommand(new Repository<>());
+        var sut = new AddCyclicalItemCommand(new ListRepository<>());
         assertThrows(IllegalArgumentException.class, () -> {
             sut.addCyclicalItem(givenAmount + " 3");
         });
@@ -56,7 +56,7 @@ class AddCyclicalItemCommandTest {
 
     @Test
     public void whenAddingCyclicalMoneyTransfer_newObjectIsAdded() {
-        var repo = new Repository<CyclicalMoneyTransfer>();
+        var repo = new ListRepository<CyclicalMoneyTransfer>();
         var sut = new AddCyclicalItemCommand(repo);
         var oldSize = repo.getAll().size();
 

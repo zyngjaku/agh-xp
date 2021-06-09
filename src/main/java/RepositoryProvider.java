@@ -5,10 +5,10 @@ public class RepositoryProvider {
     private Repository<Expense> expenseRepository;
 
     public RepositoryProvider() {
-        this.cyclicalItemRepository = new Repository<>();
-        this.goalRepository = new Repository<>();
-        this.incomeRepository = new Repository<>();
-        this.expenseRepository = new Repository<>();
+        this.cyclicalItemRepository = new ListRepository<>();
+        this.goalRepository = new ListRepository<>();
+        this.incomeRepository = new ListRepository<>();
+        this.expenseRepository = new ListRepository<>();
     }
 
     public Repository<Goal> getGoalRepository() {
