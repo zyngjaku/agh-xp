@@ -1,10 +1,10 @@
 public class Main {
     public static void main(String[] args) {
         var repositories = new RepositoryProvider();
-        repositories.setGoalRepository(new Repository<>());
-        repositories.setCyclicalItemRepository(new Repository<>());
-        repositories.setIncomeRepository(new Repository<>());
-        repositories.setExpenseRepository(new Repository<>());
+        repositories.setGoalRepository(new ListRepository<>());
+        repositories.setCyclicalItemRepository(new ListRepository<>());
+        repositories.setIncomeRepository(new ListRepository<>());
+        repositories.setExpenseRepository(new ListRepository<>());
         var settingsProvider = new SettingsProvider();
         var balanceCalculator = new BalanceCalculator(
                 repositories.getCyclicalItemRepository(),

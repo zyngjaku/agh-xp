@@ -5,9 +5,9 @@ public class BalanceCalculatorBuilder {
     private final Repository<CyclicalMoneyTransfer> cyclicalRepository;
 
     public BalanceCalculatorBuilder() {
-        this.incomeRepository = new Repository<>();
-        this.expenseRepository = new Repository<>();
-        this.cyclicalRepository = new Repository<>();
+        this.incomeRepository = new ListRepository<>();
+        this.expenseRepository = new ListRepository<>();
+        this.cyclicalRepository = new ListRepository<>();
     }
 
     public BalanceCalculator build() {

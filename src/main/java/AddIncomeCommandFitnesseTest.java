@@ -10,14 +10,14 @@ public class AddIncomeCommandFitnesseTest {
     }
 
     public BigDecimal getValue() {
-        var repository = new Repository<Income>();
+        var repository = new ListRepository<Income>();
         var sut = new AddIncomeCommand(repository);
         sut.addIncome(input);
         return repository.getAll().get(0).getValue();
     }
 
     public String getDate() {
-        var repository = new Repository<Income>();
+        var repository = new ListRepository<Income>();
         var sut = new AddIncomeCommand(repository);
         sut.addIncome(input);
         return dateFormat.format(repository.getAll().get(0).getDate());

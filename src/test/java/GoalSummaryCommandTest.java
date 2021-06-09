@@ -18,7 +18,7 @@ class GoalSummaryCommandTest {
     public void whenAddingValidGoalName_isAccepted() {
         var balance = new BigDecimal("500");
         when(balanceCalculator.getBalance(any())).thenReturn(balance);
-        var repository = new Repository<Goal>();
+        var repository = new ListRepository<Goal>();
         repository.add(new Goal("goal1", new BigDecimal(2000)));
         repository.add(new Goal("goal2", new BigDecimal(200)));
         var sut = new GoalSummaryCommand(balanceCalculator, repository);

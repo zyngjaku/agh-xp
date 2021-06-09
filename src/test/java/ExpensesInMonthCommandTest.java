@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExpensesInMonthCommandTest {
     @Test
     public void whenExpensesInMonthRange_thenReturnExpenses() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesInMonthCommand(repository);
         sut.addExpense("40 03-06-2020");
@@ -17,7 +17,7 @@ class ExpensesInMonthCommandTest {
 
     @Test
     public void whenExpensesOutOfRangeMonth_thenReturnNoExpenses() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesInMonthCommand(repository);
         sut.addExpense("60 01-06-1952");
@@ -28,7 +28,7 @@ class ExpensesInMonthCommandTest {
 
     @Test
     public void whenDateIsNotFullFilled_thenThrowInvalidNumberException() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var summary = new ExpensesInMonthCommand(repository);
         assertThrows(IllegalArgumentException.class, () -> summary.getExpensesHistory("-2019"));
         assertThrows(IllegalArgumentException.class, () -> summary.getExpensesHistory("05-"));
@@ -36,7 +36,7 @@ class ExpensesInMonthCommandTest {
 
     @Test
     public void whenNumberOfMonthIsNotValid_thenThrowInvalidNumberException() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var summary = new ExpensesInMonthCommand(repository);
         assertThrows(IllegalArgumentException.class, () -> summary.getExpensesHistory("15-2019"));
     }

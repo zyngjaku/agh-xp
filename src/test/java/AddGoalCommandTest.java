@@ -9,14 +9,14 @@ class AddGoalCommandTest {
     @ParameterizedTest(name = "Name: {0}")
     @CsvSource(value = {"Car", "Big house", "dddd", "A fairly complex name."})
     public void whenAddingValidGoalName_isAccepted(String name) {
-        var sut = new AddGoalCommand(new Repository<>());
+        var sut = new AddGoalCommand(new ListRepository<>());
         sut.addGoal(name + " 5.60");
     }
 
     @ParameterizedTest(name = "Amount: {0}")
     @CsvSource(value = {"5.20", "2000"})
     public void whenAddingValidGoalAmount_isAccepted(String amount) {
-        var sut = new AddGoalCommand(new Repository<>());
+        var sut = new AddGoalCommand(new ListRepository<>());
         sut.addGoal("House " + amount);
     }
 
@@ -24,7 +24,7 @@ class AddGoalCommandTest {
     @ParameterizedTest(name = "Amount: {0}")
     @CsvSource(value = {"0.00", "-10.99"})
     public void whenGoalTotalIsNotPositive_isRejected(String amount) {
-        var sut = new AddGoalCommand(new Repository<>());
+        var sut = new AddGoalCommand(new ListRepository<>());
         assertThrows(IllegalArgumentException.class, () -> {
             sut.addGoal("car " + amount);
         });
@@ -33,7 +33,7 @@ class AddGoalCommandTest {
     @ParameterizedTest(name = "Amount: {0}")
     @CsvSource(value = {"0.00", "10.999"})
     public void whenNumberOfDecimalPlacesIsIncorrect_isRejected(String amount) {
-        var sut = new AddGoalCommand(new Repository<>());
+        var sut = new AddGoalCommand(new ListRepository<>());
         assertThrows(IllegalArgumentException.class, () -> {
             sut.addGoal("car " + amount);
         });
@@ -41,7 +41,7 @@ class AddGoalCommandTest {
 
     @Test
     public void whenOnlyOneParameterIsGiven_isRejected() {
-        var sut = new AddGoalCommand(new Repository<>());
+        var sut = new AddGoalCommand(new ListRepository<>());
         assertThrows(IllegalArgumentException.class, () -> {
             sut.addGoal("goal");
         });
@@ -49,7 +49,7 @@ class AddGoalCommandTest {
 
     @Test
     public void whenAddingValidGoal_goalIsAddedToArray() {
-        var repository = new Repository<Goal>();
+        var repository = new ListRepository<Goal>();
         var sut = new AddGoalCommand(repository);
         sut.addGoal("goal 12");
         assertEquals(1, repository.getAll().size());
@@ -57,7 +57,7 @@ class AddGoalCommandTest {
 
     @Test
     public void whenAddingInputWithTrailingAndLeadingSpaces_spacesAreRemoved() {
-        var repository = new Repository<Goal>();
+        var repository = new ListRepository<Goal>();
         var sut = new AddGoalCommand(repository);
         sut.addGoal("        Expensive TV 6999.99  ");
         assertEquals("Expensive TV", repository.getAll().get(0).getTitle());

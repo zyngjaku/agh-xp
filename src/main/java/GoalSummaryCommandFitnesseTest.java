@@ -8,7 +8,7 @@ public class GoalSummaryCommandFitnesseTest {
     public void setValue(int[] value) {this.value = value;}
 
     public String getSummaryText() {
-        Repository<Goal> goalRepository = new Repository<>();
+        Repository<Goal> goalRepository = new ListRepository<>();
         for (int i=0; i<titles.length; i++) {
             goalRepository.add(new Goal(titles[i], BigDecimal.valueOf(value[i])));
         }
@@ -19,9 +19,9 @@ public class GoalSummaryCommandFitnesseTest {
 
     private BalanceCalculator createBalanceCalculator() {
         return new BalanceCalculator(
-                new Repository<>(),
-                new Repository<>(),
-                new Repository<>()
+                new ListRepository<>(),
+                new ListRepository<>(),
+                new ListRepository<>()
         );
     }
 }

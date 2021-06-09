@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExpensesWithinDaysCommandTest {
     @Test
     public void whenExpensesInRangeOfDays_thenReturnExpensesWithinGivenDays() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesWithinDaysCommand(repository);
         sut.addExpense("10 bike 02-06-2021");
@@ -18,7 +18,7 @@ class ExpensesWithinDaysCommandTest {
 
     @Test
     public void whenExpensesOutOfRangeOfDays_thenReturnNoExpenses() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var sut = new AddExpenseCommand(repository);
         var summary = new ExpensesWithinDaysCommand(repository);
         sut.addExpense("60 01-06-1952");
@@ -28,7 +28,7 @@ class ExpensesWithinDaysCommandTest {
 
     @Test
     public void whenDaysRangeIsNegative_thenThrowInvalidNumberException() {
-        var repository = new Repository<Expense>();
+        var repository = new ListRepository<Expense>();
         var summary = new ExpensesWithinDaysCommand(repository);
         assertThrows(IllegalArgumentException.class, () -> summary.getExpensesHistory("-3"));
     }

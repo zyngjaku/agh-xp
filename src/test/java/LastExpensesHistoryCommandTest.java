@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LastExpensesHistoryCommandTest {
 
     private Repository<Expense> createExpensesRepository() throws ParseException {
-        var expenses = new Repository<Expense>();
+        var expenses = new ListRepository<Expense>();
         var format = new SimpleDateFormat("dd-MM-yyy");
         expenses.add(new Expense(new BigDecimal("240"), format.parse("22-02-2021")));
         expenses.add(new Expense(new BigDecimal("450"), format.parse("11-05-2021")));

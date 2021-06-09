@@ -15,7 +15,7 @@ public class ExpensesPerCategoryCommandTests {
 
     @Test
     public void givenNoCategoriesUnderGivenCategory_returnEmptyList() {
-        var expenseRepository = new Repository<Expense>();
+        var expenseRepository = new ListRepository<Expense>();
         var sut = new ExpensesPerCategoryCommand(expenseRepository, mockSettingsProvider);
 
         var results = sut.findByCategory("Sample category");
@@ -24,7 +24,7 @@ public class ExpensesPerCategoryCommandTests {
 
     @Test
     public void givenSingleExpenseUnderSearchedCategory_returnSingleItem() throws ParseException {
-        var expenseRepository = new Repository<Expense>();
+        var expenseRepository = new ListRepository<Expense>();
         expenseRepository.add(new Expense(new BigDecimal(123), getDateFrom("21-01-2021"), "Category A"));
         var sut = new ExpensesPerCategoryCommand(expenseRepository, mockSettingsProvider);
 
@@ -34,7 +34,7 @@ public class ExpensesPerCategoryCommandTests {
 
     @Test
     public void givenExpensesFromDifferentCategories_returnOnlyExpensesFromExpectedCategory() throws ParseException {
-        var expenseRepository = new Repository<Expense>();
+        var expenseRepository = new ListRepository<Expense>();
         expenseRepository.add(new Expense(new BigDecimal(123), getDateFrom("21-01-2021"), "Category A"));
         expenseRepository.add(new Expense(new BigDecimal(200), getDateFrom("25-02-2021"), "Category B"));
         expenseRepository.add(new Expense(new BigDecimal(300), getDateFrom("23-03-2021"), "Category B"));
@@ -48,7 +48,7 @@ public class ExpensesPerCategoryCommandTests {
 
     @Test
     public void givenMultipleCategoriesAndAskingForNonexistentCategory_returnNoResults() throws ParseException {
-        var expenseRepository = new Repository<Expense>();
+        var expenseRepository = new ListRepository<Expense>();
         expenseRepository.add(new Expense(new BigDecimal(123), getDateFrom("21-01-2021"), "Category A"));
         expenseRepository.add(new Expense(new BigDecimal(200), getDateFrom("25-02-2021"), "Category B"));
         expenseRepository.add(new Expense(new BigDecimal(300), getDateFrom("23-03-2021"), "Category B"));
@@ -62,7 +62,7 @@ public class ExpensesPerCategoryCommandTests {
 
     @Test
     public void givenEmptyCategoryName_throwInvalidArgumentException() {
-        var expenseRepository = spy(new Repository<Expense>());
+        var expenseRepository = spy(new ListRepository<Expense>());
 
         var sut = new ExpensesPerCategoryCommand(expenseRepository, mockSettingsProvider);
 
@@ -73,7 +73,7 @@ public class ExpensesPerCategoryCommandTests {
 
     @Test
     public void givenNullCategoryName_throwInvalidArgumentException() {
-        var expenseRepository = spy(new Repository<Expense>());
+        var expenseRepository = spy(new ListRepository<Expense>());
 
         var sut = new ExpensesPerCategoryCommand(expenseRepository, mockSettingsProvider);
 

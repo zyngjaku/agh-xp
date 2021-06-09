@@ -13,7 +13,7 @@ public class AddIncomeCommandTest {
 
     @Test
     public void whenCorrectValueIsInput_thenCorrectIncomeIsAdded() {
-        var repository = new Repository<Income>();
+        var repository = new ListRepository<Income>();
         var sut = new AddIncomeCommand(repository);
         sut.addIncome("2.22");
         assertEquals(repository.getAll().get(0).getValue().compareTo(new BigDecimal("2.22")), 0);
@@ -22,7 +22,7 @@ public class AddIncomeCommandTest {
 
     @Test
     public void whenCorrectValueIsInputWithDate_thenCorrectIncomeIsAdded() throws ParseException {
-        var repository = new Repository<Income>();
+        var repository = new ListRepository<Income>();
         var sut = new AddIncomeCommand(repository);
         sut.addIncome("2.22 22-02-2222");
         assertEquals(repository.getAll().get(0).getValue().compareTo(new BigDecimal("2.22")), 0);
@@ -31,7 +31,7 @@ public class AddIncomeCommandTest {
 
     @Test
     public void whenIncorrectValueIsInputWithDate_thenExceptionIsThrown() throws ParseException {
-        var repository = new Repository<Income>();
+        var repository = new ListRepository<Income>();
         var sut = new AddIncomeCommand(repository);
         sut.addIncome("2.22 22-02-2222");
         assertThrows(IllegalArgumentException.class, () -> sut.addIncome("sdff"));
