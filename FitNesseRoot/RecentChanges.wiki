@@ -1,1 +1,3 @@
-|FrontPage||21:43:18 Wt, cze 08, 2021|
+|ExpensesPerCategoryCommand||13:03:45 śr., cze 09, 2021|
+|ExpensesWithinDays||12:56:02 śr., cze 09, 2021|
+|FrontPage||12:55:50 śr., cze 09, 2021|

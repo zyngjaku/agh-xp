@@ -33,3 +33,7 @@ BalanceCalculatorFitnesseTest
 AddIncomeCommand
 
 AddExpenseCommand
+
+ExpensesWithinDays
+
+ExpensesPerCategoryCommand
