@@ -1,0 +1,12 @@
+---
+Test
+---
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+!path target/classes
+
+!|ExpensesPerCategoryCommandFitnesseTest|
+|values|dates|categories|category|getExpensesPerCategory?|
+|200,100,300|21-07-2002, 21-07-2002, 21-07-2002|house, car, house|house|[Date: 21-07-2002, value: 200 USD, Date: 21-07-2002, value: 300 USD]|
+|200,100,300|21-07-2002, 21-07-2002, 21-07-2002|house, car, house|car|[Date: 21-07-2002, value: 100 USD]|
+|100,200|01-04-2021, 01-04-2021|bike, car|house||
