@@ -1,0 +1,11 @@
+---
+Test
+---
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+!path target/classes
+
+!|ExpensesWithinDaysCommandFitnesseTest|
+|values|dates|categories|days|getExpensesHistory?|
+|200|21-07-2002|house|2|No expenses|
+|100|01-04-2021|bike|90|Date: 01-04-2021, value: 100,00 USD, category: bikeSum of expenses: 100.0 USD|

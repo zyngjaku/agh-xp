@@ -1,0 +1,10 @@
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+
+!path target/classes
+
+!|SavingsLogicFitnesseTest|
+|savings|savingsTest?|
+|1,2,3,4,5|15|
+|0|0|
+|999|999|

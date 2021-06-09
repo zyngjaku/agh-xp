@@ -1,0 +1,11 @@
+---
+Test
+---
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+!path target/classes
+
+!|ExpensesInMonthCommandFitnesseTest|
+|values|dates|month|categories|getExpensesHistory?|
+|200|03-02-2001|04-2001|bike|No expenses in this month|
+|100|03-02-2001|02-2001|house|Day: 3, value: 100,00 USD, category: houseSum of expenses: 100.0 USD|

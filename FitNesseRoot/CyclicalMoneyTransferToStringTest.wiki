@@ -1,0 +1,8 @@
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+
+!path target/classes
+
+!|CyclicalMoneyTransferFitnesseTest|
+|amount | days |dateOfFirstTransfer| toString? |getDateOfFirstTransfer?|
+| 5000 | 40 |2021-06-06| [CYCLICAL] Amount 5000 every 40 days. |06-Jun-2021|

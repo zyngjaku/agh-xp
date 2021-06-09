@@ -1,0 +1,11 @@
+!contents -R2 -g -p -f -h
+!define TEST_SYSTEM {slim}
+
+!path target/classes
+
+!|GoalFitnesseTest|
+|title |total | getTotalGoalAmount? |
+|Hulajnoga| 1299 | 1299 |
+|Laptop| 3499 | 3499 |
+|| 3499 | EXCEPTION:=~/Goal name is null or empty string/|
+|Cokolwiek| -1000 | EXCEPTION:=~/Negative or zero goal amount/ |

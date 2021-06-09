@@ -1,0 +1,18 @@
+1.Środowisko: IntelliJ IDEA
+
+2. Konwencja nazewnictwa:
+- nazwy klas: PascalCase
+- nazwy zmiennych/metod: camelCase
+
+3. Domyślny tabulator: 4 spacje
+
+4. Klamry: otwieramy w lini deklaracji metody
+
+5. Kod tylko po angielsku
+
+6. Wersja Javy: JAVA11
+
+7. IF-y z klamrami
+
+8. Pakiety z małych liter, unikać nadmiarowych zagnieżdżeń
+
